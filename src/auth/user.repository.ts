@@ -8,6 +8,7 @@ import * as bcrypt from 'bcrypt';
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
 
+
     async signUp(authCredentialsDto: AuthCredentialsDto): Promise<void>{
         const { username, email, password } = authCredentialsDto;
 
@@ -24,7 +25,7 @@ export class UserRepository extends Repository<User> {
 
             console.log(error.code);
             if (error.code === '23505') {
-                throw new ConflictException('email is alrady exists')
+                throw new ConflictException('מייל זה קיים במערכת')
 
             } else {
                 console.log(error.code);
