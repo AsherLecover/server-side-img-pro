@@ -24,7 +24,7 @@ export class UserRepository extends Repository<User> {
 
             console.log(error.code);
             if (error.code === '23505') {
-                throw new ConflictException('email is alrady exists')
+                throw new ConflictException('מייל זה קיים כבר במערכת')
 
             } else {
                 console.log(error.code);
