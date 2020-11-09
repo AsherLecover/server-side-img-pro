@@ -6,6 +6,7 @@ import { UserRepository } from './user.repository';
 import { JwtModule } from  '@nestjs/jwt';
 import { PassportModule} from '@nestjs/passport';
 import { JwtStategy } from './dto/jwt.stategy';
+import { ImgRep } from '../subjects-images-data/imgRepo';
 
 
 @Module({
@@ -13,7 +14,7 @@ import { JwtStategy } from './dto/jwt.stategy';
   imports: [
     PassportModule.register({defaultStrategy:'jwt'}),
     JwtModule.register({secret: 'topSecret51',signOptions: { expiresIn: 3600}}),
-    TypeOrmModule.forFeature([UserRepository])
+    TypeOrmModule.forFeature([UserRepository,ImgRep])
   ],
 
   controllers:[AuthController],

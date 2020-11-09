@@ -29,3 +29,5 @@ export class AuthCredentialsDtoSignin {
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {message: 'password must have at least one uppercase letter, a lowercase a number, and a special character'} )
   password: string;
 }
+
+
