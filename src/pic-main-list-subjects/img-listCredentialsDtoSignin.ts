@@ -2,6 +2,8 @@ export class ImgListCredentialsDtoSignin {
 
     id: number;
 
+    imagesSubject: string;
+
     subId: number;
 
     imgId: number;

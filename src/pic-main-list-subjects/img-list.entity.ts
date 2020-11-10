@@ -6,8 +6,11 @@ export class ImgListBySubject extends BaseEntity{
     
 
     @PrimaryColumn()
-    id:number
+    id:number;
 
+    @Column()
+    imagesSubject: string;
+    
     @Column()
     subId: number;
 

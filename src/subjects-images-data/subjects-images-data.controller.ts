@@ -1,4 +1,5 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { SubjectsImagesDataService } from './subjects-images-data.service';
 
 @Controller('pic-sub-main-page')
@@ -10,7 +11,6 @@ export class SubjectsImagesDataController {
     uploudImg(){
         this.subjectsImagesDataService.cardImgList()
     }
-
     @Get('')
      getAllImeges(){
         console.log('dddd: ', this.subjectsImagesDataService.getAllImeges());
