@@ -6,10 +6,14 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class ImgDetailsService {
 
-    constructor( @InjectRepository(ImgListBySubject)
-    private readonly userRepository: Repository<ImgListBySubject>,){}
+     constructor( 
+        @InjectRepository(ImgListBySubject)
+    private readonly userRepository: Repository<ImgListBySubject>
+    ){}
 
-    async getImg(subId: number, imgId) {
+     async getImg(subId: number, imgId) {
+         console.log('from service:', subId, imgId);
+         
       
       
         const query = this.userRepository.createQueryBuilder('img_list_by_subject');
