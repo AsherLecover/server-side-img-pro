@@ -14,7 +14,6 @@ export class PicMainListSubjectsController {
     @Get('/:id')
      getAllImeges(
         @Param('id', ParseIntPipe) id: number,
-
      ){
         console.log('param: ',id);
         
