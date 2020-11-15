@@ -17,10 +17,8 @@ export class AuthController {
     // @UseGuards(AuthGuard())
     signIn(@Body(ValidationPipe) authCredentialsDtoSignin: AuthCredentialsDtoSignin): Promise< {accessToken: string}>
     {
-        // console.log('!!!:', authCredentialsDtoSignin['headers'].lazyUpdate[0].value);
-        // console.log('&&&', authCredentialsDtoSignin['headers']);
-        
-
+        console.log('?????:', authCredentialsDtoSignin);
+        console.log(1234);
         
         
         return this.authService.signIn(authCredentialsDtoSignin);

@@ -20,7 +20,6 @@ export class PicMainListSubjectsController {
      getAllImeges(
         @Req() request: Request,
         @Param('id', ParseIntPipe) id: number,
-
      ){
         console.log('param: ',id);
         console.log('req: ',request);
