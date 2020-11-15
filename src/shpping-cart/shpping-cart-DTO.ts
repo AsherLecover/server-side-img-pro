@@ -8,6 +8,6 @@ export class ShppingCartDto {
   imgId: number;
   numOfItems: number;
   printType: PrintType
-  printsize:PrintSize
+  printSize:PrintSize
 }
 

@@ -5,7 +5,8 @@ import { ImgListRepository } from './img-list-repository';
 @Injectable()
 export class PicMainListSubjectsService {
 
-    constructor( @InjectRepository(ImgListRepository)
+    constructor(
+         @InjectRepository(ImgListRepository)
     private imgListRepository: ImgListRepository){}
 
     async CreateimgList() {

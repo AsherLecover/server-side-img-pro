@@ -7,7 +7,7 @@ import { PrintType } from "./print-type.enum";
 export class ShppingCart extends BaseEntity{
     
 
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id:number;
 
     @Column({nullable:true})

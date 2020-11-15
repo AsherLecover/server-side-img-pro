@@ -20,7 +20,7 @@ import { ShppingCartModule } from './shpping-cart/shpping-cart.module';
     PicMainListSubjectsModule,
     ImgDetailsModule,
     ShppingCartModule],
-  controllers: [AppController, ShppingCartController],
-  providers: [AppService, ShppingCartService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
