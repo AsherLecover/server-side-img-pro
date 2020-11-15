@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { JwtStategy } from 'src/auth/dto/jwt.stategy';
+import { JwtStategy } from 'src/auth/jwt.stategy';
 import { UserRepository } from 'src/auth/user.repository';
 import { ImgRep } from './imgRepo';
 import { SubjectsImagesDataController } from './subjects-images-data.controller';

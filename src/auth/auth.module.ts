@@ -5,7 +5,7 @@ import { AuthService } from './auth.service';
 import { UserRepository } from './user.repository';
 import { JwtModule } from  '@nestjs/jwt';
 import { PassportModule} from '@nestjs/passport';
-import { JwtStategy } from './dto/jwt.stategy';
+import { JwtStategy } from './jwt.stategy';
 import { ImgRep } from '../subjects-images-data/imgRepo';
 
 
