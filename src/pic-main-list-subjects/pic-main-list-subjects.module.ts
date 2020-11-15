@@ -7,15 +7,9 @@ import { ImgDetailsModule } from 'src/img-details/img-details.module';
 
 @Module({
 
-  imports: [
-    TypeOrmModule.forFeature([ImgListRepository]),
-    forwardRef(() => ImgDetailsModule),
-    
-    
-  ],
-
+  imports: [TypeOrmModule.forFeature([ImgListRepository])],
   controllers:[PicMainListSubjectsController],
   providers: [ PicMainListSubjectsService],
-  exports:[],
+  // exports:[PicMainListSubjectsService],
 })
 export class PicMainListSubjectsModule {}

@@ -7,9 +7,10 @@ import { ImgDetailsController } from './img-details.controller';
 import { ImgDetailsService } from './img-details.service';
 
 @Module({
-    imports:[ ,
-        forwardRef(() => PicMainListSubjectsModule),
-],
+    imports:[
+         TypeOrmModule.forFeature([ImgListRepository]),
+        forwardRef(() => PicMainListSubjectsModule)
+    ],
     controllers:[ImgDetailsController],
     providers: [ImgDetailsService],
 })

@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ImgListRepository } from 'src/pic-main-list-subjects/img-list-repository';
 import { ImgListBySubject } from 'src/pic-main-list-subjects/img-list.entity';
 import { Repository } from 'typeorm';
 
@@ -7,8 +8,8 @@ import { Repository } from 'typeorm';
 export class ImgDetailsService {
 
      constructor( 
-        @InjectRepository(ImgListBySubject)
-    private readonly userRepository: Repository<ImgListBySubject>
+        @InjectRepository(ImgListRepository)
+    private readonly userRepository: Repository<ImgListRepository>
     ){}
 
      async getImg(subId: number, imgId) {
