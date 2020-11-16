@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { ShppingCartDto } from './shpping-cart-DTO';
 import { ShppingCartService } from './shpping-cart.service';
-import { Request, Response } from 'express';
+import { Request } from 'express';
 
 @Controller('shpping-cart')
 export class ShppingCartController {
@@ -12,10 +12,22 @@ export class ShppingCartController {
    async addImgToBag(
         @Body() shppingCartDto: ShppingCartDto[],
         @Req() response: Request) {
-            this.userEmail = response.body[0].email
+            this.shppingCartService.userEmail = response.body[0].email
            await this.shppingCartService.addImgToBag(shppingCartDto)
-    return  this.shppingCartService.getUserBag(this.userEmail);
+
+    return  this.shppingCartService.getUserBag(this.shppingCartService.userEmail);
    
+}
+
+@Get()
+async getImgDetils(imgId){
+    console.log(53553535);
+    (await this.shppingCartService.getUserBag(this.shppingCartService.userEmail)).forEach( a =>{
+        return this.shppingCartService.getImgDetils(a.imgId)
+    })
+    
+    
+    // return this.shppingCartService.getImgDetils(imgId)
 }
 
 

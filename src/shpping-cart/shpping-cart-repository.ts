@@ -30,7 +30,7 @@ export class ShppingCartRepository extends Repository<ShppingCart> {
     
         query.where('email = :email', { email: email });
         const itemsInBag = await query.getMany();
-        console.log('BAGYYYOOOOOOOWWWWWW:', itemsInBag);
+        // console.log('BAGYYYOOOOOOOWWWWWW:', itemsInBag);
         return itemsInBag;
     }
 
