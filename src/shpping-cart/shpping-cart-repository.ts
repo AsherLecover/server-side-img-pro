@@ -5,12 +5,15 @@ import { ShppingCart } from "./shpping-cart-entity";
 
 @EntityRepository(ShppingCart)
 export class ShppingCartRepository extends Repository<ShppingCart> {
+ 
 
     async addImgToBag(shppingCartDto: ShppingCartDto[]): Promise<void> {
+        // console.log('shpping from repo: ', shppingCartDto);
+
         const img = new ShppingCart()
         for (const i of shppingCartDto) {
             img.imgId = i.imgId;
-            img.userEmail = i.userEmail;
+            img.email = i.email;
             img.numOfItems = i.numOfItems;
             img.printType = i.printType;
             img.printSize = i.printSize;
@@ -20,6 +23,15 @@ export class ShppingCartRepository extends Repository<ShppingCart> {
         }
         // console.log('img from repository: ', img);
         
+    }
+
+   async getUserBag(email: string) {
+        const query = this.createQueryBuilder('shpping_cart');
+    
+        query.where('email = :email', { email: email });
+        const itemsInBag = await query.getMany();
+        console.log('BAGYYYOOOOOOOWWWWWW:', itemsInBag);
+        return itemsInBag;
     }
 
 

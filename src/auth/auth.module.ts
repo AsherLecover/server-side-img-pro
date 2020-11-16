@@ -7,6 +7,7 @@ import { JwtModule } from  '@nestjs/jwt';
 import { PassportModule} from '@nestjs/passport';
 import { JwtStategy } from './jwt.stategy';
 import { ImgRep } from '../subjects-images-data/imgRepo';
+import { ShppingCartRepository } from 'src/shpping-cart/shpping-cart-repository';
 
 
 @Module({
@@ -14,7 +15,7 @@ import { ImgRep } from '../subjects-images-data/imgRepo';
   imports: [
     PassportModule.register({defaultStrategy:'jwt'}),
     JwtModule.register({secret: 'topSecret51',signOptions: { expiresIn: 3600}}),
-    TypeOrmModule.forFeature([UserRepository,ImgRep])
+    TypeOrmModule.forFeature([UserRepository,ImgRep,ShppingCartRepository])
   ],
 
   controllers:[AuthController],

@@ -24,7 +24,7 @@ export class PicMainListSubjectsController {
         console.log('param: ',id);
         console.log('req: ',request);
         
-        return  this.picMainListSubjectsService.getAllImegesBySubjectId(id)
+         return this.picMainListSubjectsService.getAllImegesBySubjectId(id)
     }
 
     

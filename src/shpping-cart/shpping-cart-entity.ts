@@ -10,8 +10,8 @@ export class ShppingCart extends BaseEntity{
     @PrimaryGeneratedColumn()
     id:number;
 
-    @Column({nullable:true})
-    userEmail: string;
+    @Column({nullable:false})
+    email: string;
     
     @Column()
     imgId: number;

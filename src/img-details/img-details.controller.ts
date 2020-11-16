@@ -11,7 +11,6 @@ export class ImgDetailsController {
         @Param('subId',ParseIntPipe) subId: number,
          @Param('imgId',ParseIntPipe) imgId: number
          ){
-        console.log('from controlerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr: ', subId, imgId);
         return this.imgDetailsService.getImg(subId, imgId)
 
     }

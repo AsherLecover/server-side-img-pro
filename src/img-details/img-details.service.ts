@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ImgListRepository } from 'src/pic-main-list-subjects/img-list-repository';
 import { ImgListBySubject } from 'src/pic-main-list-subjects/img-list.entity';
+import { ShppingCartRepository } from 'src/shpping-cart/shpping-cart-repository';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -9,7 +10,9 @@ export class ImgDetailsService {
 
      constructor( 
         @InjectRepository(ImgListRepository)
-    private readonly userRepository: Repository<ImgListRepository>
+        private readonly userRepository: Repository<ImgListRepository>
+
+   
     ){}
 
      async getImg(subId: number, imgId) {

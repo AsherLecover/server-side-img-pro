@@ -1,23 +1,22 @@
-import { Body, Controller, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { ShppingCartDto } from './shpping-cart-DTO';
 import { ShppingCartService } from './shpping-cart.service';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 
 @Controller('shpping-cart')
 export class ShppingCartController {
+    userEmail: string = ''
     constructor(private shppingCartService: ShppingCartService) { }
 
     @Post()
-    addImgToBag(
+   async addImgToBag(
         @Body() shppingCartDto: ShppingCartDto[],
-        @Res() request: Response): Promise<void> {
-    console.log('shpping from controler: ', shppingCartDto);
-
-    return this.shppingCartService.addImgToBag(shppingCartDto)
+        @Req() response: Request) {
+            this.userEmail = response.body[0].email
+           await this.shppingCartService.addImgToBag(shppingCartDto)
+    return  this.shppingCartService.getUserBag(this.userEmail);
+   
 }
-
-
-
 
 
 }
