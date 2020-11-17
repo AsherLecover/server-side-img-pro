@@ -1,29 +1,46 @@
-import { BaseEntity, Column, Entity, PrimaryColumn, PrimaryGeneratedColumn, Unique } from "typeorm";
-import { PrintSize } from "./print-size.enum";
-import { PrintType } from "./print-type.enum";
-
+import { type } from 'os';
+import { User } from 'src/auth/user.entity';
+import { ImgListRepository } from 'src/pic-main-list-subjects/img-list-repository';
+import { ImgListBySubject } from 'src/pic-main-list-subjects/img-list.entity';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm';
+import { PrintSize } from './print-size.enum';
+import { PrintType } from './print-type.enum';
 
 @Entity()
-export class ShppingCart extends BaseEntity{
-    
+export class ShppingCart extends BaseEntity {
+  @PrimaryGeneratedColumn()
+  id: number;
+  
+  @ManyToOne(  () => User, user => user.email)
+  @JoinColumn({name: 'UserIdByEmail'})
+  user: User;
 
-    @PrimaryGeneratedColumn()
-    id:number;
+  @ManyToOne( () => ImgListBySubject)
+  @JoinColumn({name: 'imgId'})
+  img: ImgListBySubject;
 
-    @Column({nullable:false})
-    email: string;
-    
-    @Column()
-    imgId: number;
+  @Column()
+  numOfItems: number;
 
-    @Column()
-    numOfItems:number;
+  @Column({ nullable: true })
+  printSize: PrintSize;
 
-    @Column({nullable:true})
-    printSize: PrintSize;
+  @Column({ nullable: true })
+  printType: PrintType;
 
-    @Column({nullable:true})
-    printType: PrintType
+  @Column()
+  imgId: number;
 
+  @Column({ type: "character varying", nullable:true})
+  UserIdByEmail: number;
 }
 

@@ -17,10 +17,8 @@ export class ImgDetailsService {
     ){}
 
      async getImg(subId: number, imgId) {
-         console.log('from service:', subId, imgId);
          
-      
-      
+    
         const query = this.imgListRepository.createQueryBuilder('img_list_by_subject');
 
         query.where('img_list_by_subject.subId = :subId', { subId: subId })

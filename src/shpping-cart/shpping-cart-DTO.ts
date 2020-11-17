@@ -4,7 +4,7 @@ import { PrintType } from "./print-type.enum";
 export class ShppingCartDto {
   
   id: number;
-  email: string;
+  UserIdByEmail: number;
   imgId: number;
   numOfItems: number;
   printType: PrintType

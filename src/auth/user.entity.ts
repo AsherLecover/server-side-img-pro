@@ -1,5 +1,7 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from "typeorm";
 import * as bcrypt from 'bcrypt';
+import { ImgListBySubject } from "src/pic-main-list-subjects/img-list.entity";
+import { ShppingCart } from "src/shpping-cart/shpping-cart-entity";
 
 
 @Entity()
@@ -20,6 +22,10 @@ export class User extends BaseEntity{
 
     @Column()
     salt: string;
+
+    @OneToMany( () => ShppingCart, shippingCart => shippingCart.UserIdByEmail)
+    img:ImgListBySubject[]
+    // 'shpping_cart', 'email')
 
     async validatePassword(password: string): Promise<boolean>{
         const hash = await bcrypt.hash(password, this.salt);
