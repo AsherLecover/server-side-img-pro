@@ -1,20 +1,28 @@
-import { Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { SubjectsImagesDataService } from './subjects-images-data.service';
+import { Request } from 'express';
+
 
 @Controller('pic-sub-main-page')
 export class SubjectsImagesDataController {
 
-    constructor(private subjectsImagesDataService: SubjectsImagesDataService){}
+    constructor(private subjectsImagesDataService: SubjectsImagesDataService) { }
 
     @Post('img')
-    uploudImg(){
+    uploudImg() {
         this.subjectsImagesDataService.cardImgList()
     }
     @Get('')
-     getAllImeges(){
-        console.log('dddd: ', this.subjectsImagesDataService.getAllImeges());
-        
-        return  this.subjectsImagesDataService.getAllImeges()
+    getAllImeges() {
+        return this.subjectsImagesDataService.getAllImeges()
+    }
+    @Post()
+    getUserBag(
+        @Req() req: Request
+    ) {
+        console.log(54363256325653);
+
+           return this.subjectsImagesDataService.getUserBag(req.body.user_id)
     }
 }
