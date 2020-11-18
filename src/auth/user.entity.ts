@@ -23,7 +23,7 @@ export class User extends BaseEntity{
     @Column()
     salt: string;
 
-    @OneToMany( () => ShppingCart, shippingCart => shippingCart.UserIdByEmail)
+    @OneToMany( () => ShppingCart, shippingCart => shippingCart.user_id)
     img:ImgListBySubject[]
     // 'shpping_cart', 'email')
 

@@ -11,21 +11,30 @@ export class ShppingCartController {
 
     @Post()
    async addImgToBag(
-        @Body() shppingCartDto: ShppingCartDto[],
+        @Body() shppingCartDto: ShppingCartDto,
         @Req() response: Request) {
             // this.shppingCartService.userEmail = response.body[0].email
-            // console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%: ',response.body[0].email);
-            await this.shppingCartService.getUserByEmail(response.body[0].email)
-           await this.shppingCartService.addImgToBag(shppingCartDto);
+            console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%: ',response.body.list[0]);
+             
+            // await this.shppingCartService.getUserByEmail(response.body[0])
+            // console.log('shping dto:', shppingCartDto);
+            
+            this.shppingCartService.addImgToBag(
+                response.body.list[0].numOfItems,
+                response.body.list[0].printSize,
+                response.body.list[0].printType,
+                response.body.list[0].imgId,
+                response.body.list[0].user_id
+            );
 
         //    await (await this.shppingCartService.getUserBag(this.shppingCartService.userEmail)).forEach( item => {
         //      this.shppingCartService.imgIdInBagList.push(item.imgId)
                
         //      });
             
-            console.log('$ (-; )' ,this.shppingCartService.imgIdInBagList);
+            // console.log('$ (-; )' ,this.shppingCartService.imgIdInBagList);
 
-    return  this.shppingCartService.getUserBag(this.shppingCartService.userEmail);
+    return  this.shppingCartService.getUserBag(response.body.list[0].userIdByEmail);
    
 }
 

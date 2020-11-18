@@ -21,7 +21,7 @@ export class ShppingCart extends BaseEntity {
   id: number;
   
   @ManyToOne(  () => User, user => user.email)
-  @JoinColumn({name: 'UserIdByEmail'})
+  @JoinColumn({name: 'user_id'})
   user: User;
 
   @ManyToOne( () => ImgListBySubject)
@@ -41,6 +41,6 @@ export class ShppingCart extends BaseEntity {
   imgId: number;
 
   @Column({ type: "character varying", nullable:true})
-  UserIdByEmail: number;
+  user_id: number;
 }
 
