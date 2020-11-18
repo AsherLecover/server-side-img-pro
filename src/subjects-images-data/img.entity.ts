@@ -6,7 +6,7 @@ export class cardImgList extends BaseEntity{
 
     @PrimaryGeneratedColumn()
     // @Column()
-    imgId: number;
+    img_id: number;
 
     @Column()
     imgUrl: string;

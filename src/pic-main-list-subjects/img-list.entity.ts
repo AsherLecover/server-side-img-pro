@@ -15,7 +15,7 @@ export class ImgListBySubject extends BaseEntity{
     subId: number;
 
     @Column()
-    imgId: number;
+    img_id: number;
 
     @Column()
     numOfItems:number;

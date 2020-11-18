@@ -38,7 +38,6 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credntials');
     }
     if(user){
-      console.log('asher');
       
       this.getUserBag(user.email)
     }

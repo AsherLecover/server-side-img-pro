@@ -6,7 +6,7 @@ export class ImgListCredentialsDtoSignin {
 
     subId: number;
 
-    imgId: number;
+    img_id: number;
 
     numOfItems:number;
 

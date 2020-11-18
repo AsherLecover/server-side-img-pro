@@ -6,12 +6,12 @@ export class ImgDetailsController {
 
     constructor(private imgDetailsService: ImgDetailsService){}
 
-    @Get('/:subId/:imgId')
+    @Get('/:subId/:img_id')
     getImg(
         @Param('subId',ParseIntPipe) subId: number,
-         @Param('imgId',ParseIntPipe) imgId: number
+         @Param('img_id',ParseIntPipe) img_id: number
          ){
-        return this.imgDetailsService.getImg(subId, imgId)
+        return this.imgDetailsService.getImg(subId, img_id)
 
     }
 

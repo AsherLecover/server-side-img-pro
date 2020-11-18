@@ -16,13 +16,13 @@ export class ImgDetailsService {
    
     ){}
 
-     async getImg(subId: number, imgId) {
+     async getImg(subId: number, img_id) {
          
     
         const query = this.imgListRepository.createQueryBuilder('img_list_by_subject');
 
         query.where('img_list_by_subject.subId = :subId', { subId: subId })
-        .andWhere('img_list_by_subject.imgId = :imgId', { imgId: imgId });
+        .andWhere('img_list_by_subject.img_id = :img_id', { img_id: img_id });
 
         const img = await query.getOne();
         return img

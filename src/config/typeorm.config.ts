@@ -11,6 +11,6 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
     database: 'img_project',
     // logging:true,
     entities: [__dirname + '/../**/*.entity.{js,ts}',ShppingCart],
-    synchronize: true,
+    synchronize: true
 };
  

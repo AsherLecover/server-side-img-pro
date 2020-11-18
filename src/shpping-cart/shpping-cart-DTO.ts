@@ -5,7 +5,7 @@ export class ShppingCartDto {
   
   id: number;
   UserIdByEmail: number;
-  imgId: number;
+  img_id: number;
   numOfItems: number;
   printType: PrintType
   printSize:PrintSize

@@ -1,6 +1,6 @@
 export class ImgCredentialsDtoSignin {
 
-    imgId: number;
+    img_id: number;
     imgUrl: string;
     subject: string;
   }
