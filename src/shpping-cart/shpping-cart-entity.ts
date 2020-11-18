@@ -16,7 +16,8 @@ import { PrintSize } from './print-size.enum';
 import { PrintType } from './print-type.enum';
 
 @Entity()
-export class ShppingCart extends BaseEntity {
+export class ShppingCart  extends BaseEntity {
+  //קבוצות
   @PrimaryGeneratedColumn()
   id: number;
   

@@ -15,29 +15,29 @@ export class ShppingCartController {
     @Body() shppingCartDto: ShppingCartDto,
     @Req() req: Request,
   ) {
-
     console.log('req listtttt', req.body.list[0]);
-    
-    
-     await this.shppingCartService.addImgToBag(
-        req.body.list[0].numOfItems,
-        req.body.list[0].printSize,
-        req.body.list[0].printType,
-        req.body.list[0].img_id,
-        req.body.list[0].user_id,
+
+    await this.shppingCartService.addImgToBag(
+      req.body.list[0].numOfItems,
+      req.body.list[0].printSize,
+      req.body.list[0].printType,
+      req.body.list[0].img_id,
+      req.body.list[0].user_id,
     );
 
     return this.shppingCartService.getUserBag(req.body.list[0].user_id);
   }
 
-  @Get()
+  @Post('shpping-cart')
   getUserBag(
-    @Req() req: Request){
-        console.log(54363256325653);
-        
-        console.log('reqqqqqqqq', req);
-        //  return this.shppingCartService.getUserBag(req.body)
-
+      @Req() req: Request
+      ) {
+    console.log(54363256325653);
+  
+    console.log('reqq', req.body.user_id);
+     return this.shppingCartService.getUserBag(req.body.user_id)
   }
-
 }
+
+
+
