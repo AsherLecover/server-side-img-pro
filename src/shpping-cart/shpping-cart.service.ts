@@ -12,6 +12,7 @@ import { ShppingCartRepository } from './shpping-cart-repository';
 
 @Injectable()
 export class ShppingCartService {
+ 
   img_idInBagList: number[] = [];
   userEmail: string;
   userId: any;
@@ -62,5 +63,11 @@ export class ShppingCartService {
       .getMany();
 
     return await query;
+  }
+
+ async deleteImgFromBag(userId: number, imgId:number ) {
+  console.log('imgid from service', imgId);
+    await this.shppingCartRepository.deleteImgFromBag(userId,imgId);
+    return  await this.getUserBag(userId)
   }
 }

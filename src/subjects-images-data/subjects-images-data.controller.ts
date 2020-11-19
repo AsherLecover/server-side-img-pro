@@ -21,7 +21,6 @@ export class SubjectsImagesDataController {
     getUserBag(
         @Req() req: Request
     ) {
-        console.log(54363256325653);
 
            return this.subjectsImagesDataService.getUserBag(req.body.user_id)
     }

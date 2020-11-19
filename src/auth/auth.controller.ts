@@ -18,7 +18,7 @@ export class AuthController {
     // @UseGuards(AuthGuard())
     signIn(@Body(ValidationPipe) authCredentialsDtoSignin: AuthCredentialsDtoSignin): Promise< {accessToken: string}>{
         // this.authService.getUserBag(authCredentialsDtoSignin.email)
-        console.log('?????:', authCredentialsDtoSignin.email);
+        console.log('?????:', authCredentialsDtoSignin);
         console.log(1234);
         
         

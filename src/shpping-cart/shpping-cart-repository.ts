@@ -7,6 +7,12 @@ import { ShppingCart } from "./shpping-cart-entity";
 
 @EntityRepository(ShppingCart)
 export class ShppingCartRepository extends Repository<ShppingCart> {
+
+  async deleteImgFromBag(userId: number, imgId: number) {
+    console.log('imgid from repo', imgId);
+    
+     return await this.delete(+imgId)
+  }
     
     
 }

@@ -41,7 +41,6 @@ export class AuthService {
       
       this.getUserBag(user.email)
     }
-
     const payload: JwtPayload = {
       id: user.id,
       username: user.username,

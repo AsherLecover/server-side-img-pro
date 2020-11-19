@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Req, Res } from '@nestjs/common';
 import { ShppingCartDto } from './shpping-cart-DTO';
 import { ShppingCartService } from './shpping-cart.service';
 import { Request } from 'express';
@@ -32,10 +32,16 @@ export class ShppingCartController {
   getUserBag(
       @Req() req: Request
       ) {
-    console.log(54363256325653);
-  
-    console.log('reqq', req.body.user_id);
      return this.shppingCartService.getUserBag(req.body.user_id)
+  }
+
+  @Delete('shpping-cart')
+  deleteImgFromBag(
+    @Req() req: Request){
+      // console.log(delete `func controler, userId:,${Number( req.query.userId)} imgId: ${Number(req.query.imgId)}`);
+      // console.log(delete `func controler imgId:  ${Number(req.query.imgId)}`);
+
+      return this.shppingCartService.deleteImgFromBag(Number( req.query.userId),Number(req.query.imgId));
   }
 }
 
