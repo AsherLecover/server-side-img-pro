@@ -27,12 +27,13 @@ export class SubjectsImagesDataService {
     }
 
     async getUserBag(user_id: number): Promise<any> {
-        // const query = await this.imgListRepository.query(`
+        // const query1 = await this.imgListRepository.query(`
         //     SELECT *
         //     FROM shpping_cart as shp
         //     JOIN img_list_by_subject as imgs
         //     ON shp.img_id = imgs.id
-        //     WHERE user_id = ${userIdByEmail}`);
+        //     WHERE user_id = ${user_id}`);
+
         const query = await this.shppingCartRepository
             .createQueryBuilder()
             .where('ShppingCart.user_id = ' + user_id)
