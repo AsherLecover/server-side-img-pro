@@ -38,8 +38,6 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credntials');
     }
     if(user){
-      
-      this.getUserBag(user.email)
     }
     const payload: JwtPayload = {
       id: user.id,
@@ -47,21 +45,16 @@ export class AuthService {
       email: user.email,
     };
     const accessToken = await this.jwtService.sign(payload);
-
+     this.getUserBag(user.email)
     return { accessToken };
   }
 
   async getUserBag(email: string) {
     console.log('from service:', email);
-
     const query = this.shppingCartRepository.createQueryBuilder('shpping_cart');
-
     query.where('email = :email', { email: email });
     const itemsInBag = await query.getMany();
     console.log('BAG:', itemsInBag);
-
-
-    
     return itemsInBag;
   }
 }
