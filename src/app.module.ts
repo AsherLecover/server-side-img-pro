@@ -10,6 +10,9 @@ import { ImgDetailsModule } from './img-details/img-details.module';
 import { ShppingCartController } from './shpping-cart/shpping-cart.controller';
 import { ShppingCartService } from './shpping-cart/shpping-cart.service';
 import { ShppingCartModule } from './shpping-cart/shpping-cart.module';
+import { ManagementController } from './management/management.controller';
+import { ManagementService } from './management/management.service';
+import { ManagementModule } from './management/management.module';
 
 
 @Module({
@@ -19,8 +22,9 @@ import { ShppingCartModule } from './shpping-cart/shpping-cart.module';
     SubjectsImagesDataModule,
     PicMainListSubjectsModule,
     ImgDetailsModule,
-    ShppingCartModule],
-  controllers: [AppController],
-  providers: [AppService],
+    ShppingCartModule,
+    ManagementModule],
+  controllers: [AppController, ManagementController],
+  providers: [AppService, ManagementService],
 })
 export class AppModule {}

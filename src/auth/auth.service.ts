@@ -15,12 +15,12 @@ export class AuthService {
   constructor(
     @InjectRepository(UserRepository)
     private userRepository: UserRepository,
-    
-  
+
+
     private jwtService: JwtService,
     @InjectRepository(ShppingCartRepository)
     private readonly shppingCartRepository: Repository<ShppingCartRepository>
-  ) {}
+  ) { }
 
   async signUp(authCredentialsDto: AuthCredentialsDto): Promise<void> {
     return this.userRepository.signUp(authCredentialsDto);
@@ -37,22 +37,28 @@ export class AuthService {
       console.log('sginIn user: ', user);
       throw new UnauthorizedException('Invalid credntials');
     }
-    if(user){
+
+    if (user) {
     }
     const payload: JwtPayload = {
       id: user.id,
+      role: user.role,
       username: user.username,
       email: user.email,
     };
     const accessToken = await this.jwtService.sign(payload);
-     this.getUserBag(user.email)
+    setTimeout(() => {
+      this.getUserBag(user.id)
+    }, 5000);
+
+
+
     return { accessToken };
   }
 
-  async getUserBag(email: string) {
-    console.log('from service:', email);
+  async getUserBag(id: number) {
     const query = this.shppingCartRepository.createQueryBuilder('shpping_cart');
-    query.where('email = :email', { email: email });
+    query.where('id = :id', { id: id });
     const itemsInBag = await query.getMany();
     console.log('BAG:', itemsInBag);
     return itemsInBag;

@@ -2,6 +2,7 @@ import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique }
 import * as bcrypt from 'bcrypt';
 import { ImgListBySubject } from "src/pic-main-list-subjects/img-list.entity";
 import { ShppingCart } from "src/shpping-cart/shpping-cart-entity";
+import { role } from "./auth-role.enum";
 
 
 @Entity()
@@ -10,6 +11,9 @@ export class User extends BaseEntity{
 
     @PrimaryGeneratedColumn()
     id: number;
+
+    @Column()
+    role: role;
 
     @Column()
     username: string;
