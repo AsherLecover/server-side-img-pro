@@ -24,7 +24,7 @@ import { ManagementModule } from './management/management.module';
     ImgDetailsModule,
     ShppingCartModule,
     ManagementModule],
-  controllers: [AppController, ManagementController],
-  providers: [AppService, ManagementService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

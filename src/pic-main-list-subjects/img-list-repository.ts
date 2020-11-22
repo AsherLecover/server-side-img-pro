@@ -120,7 +120,6 @@ export class ImgListRepository extends Repository<ImgListBySubject> {
 
     async getAllImegesBySubjectId(subId: number) {
       
-      
         const query = this.createQueryBuilder('img_list_by_subject');
 
         query.where('img_list_by_subject.subId = :subId', { subId: subId });

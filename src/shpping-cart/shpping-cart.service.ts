@@ -46,11 +46,11 @@ export class ShppingCartService {
 
   async getUserBag(userId: number): Promise<any> {
     // const query = await this.imgListRepository.query(`
-    //     SELECT *
-    //     FROM shpping_cart as shp
-    //     JOIN img_list_by_subject as imgs
-    //     ON shp.img_id = imgs.id
-    //     WHERE user_id = ${userIdByEmail}`);
+        // SELECT *
+        // FROM shpping_cart as shp
+        // JOIN img_list_by_subject as imgs
+        // ON shp.img_id = imgs.id
+        // WHERE user_id = ${userId}`);
     const query = await this.shppingCartRepository
       .createQueryBuilder()
       .where('ShppingCart.user_id = ' + userId)

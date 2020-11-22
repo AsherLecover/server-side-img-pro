@@ -21,9 +21,7 @@ export class PicMainListSubjectsController {
         @Req() request: Request,
         @Param('id', ParseIntPipe) id: number,
      ){
-        console.log('param: ',id);
-        console.log('req: ',request);
-        
+         console.log('all images main list');
          return this.picMainListSubjectsService.getAllImegesBySubjectId(id)
     }
 
