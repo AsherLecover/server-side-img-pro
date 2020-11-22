@@ -8,10 +8,12 @@ import {
   AuthCredentialsDtoSignin,
 } from './dto/auth-credentials.dto';
 import { JwtPayload } from './jwt-payload-interface';
+import { User } from './user.entity';
 import { UserRepository } from './user.repository';
 
 @Injectable()
 export class AuthService {
+  userModel: any;
   constructor(
     @InjectRepository(UserRepository)
     private userRepository: UserRepository,
@@ -62,5 +64,25 @@ export class AuthService {
     const itemsInBag = await query.getMany();
     console.log('BAG:', itemsInBag);
     return itemsInBag;
+  }
+  //---------------------------------FaceBook-----------------------------------
+
+  async findOrCreate(profile): Promise<User> {
+    const user = await this.userModel
+      .findOne({ 'facebook.id': profile.id })
+      .exec();
+    if (user) {
+      return user;
+    }
+    const createdUser = new this.userModel({
+      email: profile.emails[0].value,
+      firstName: profile.name.givenName,
+      lastName: profile.name.familyName,
+      Facebook: {
+        id: profile.id,
+        avatar: profile.photos[0].value,
+      },
+    });
+    return createdUser.save();
   }
 }

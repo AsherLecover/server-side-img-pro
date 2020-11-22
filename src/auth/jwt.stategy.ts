@@ -14,6 +14,10 @@ export class JwtStategy extends PassportStrategy(Strategy){
         super({
           jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
           secretOrKey: 'topSecret51',
+          // CLINET_ID_FB=718817949052988
+          //CLINET_SECRET_FB=fd17b7ac4fa40e00d9b825057a01d1c6
+          // http://localhost:3000/auth/facebook/secret
+
         });
     }
 

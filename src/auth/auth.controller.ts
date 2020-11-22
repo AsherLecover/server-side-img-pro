@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { AuthCredentialsDto, AuthCredentialsDtoSignin } from './dto/auth-credentials.dto';
@@ -17,13 +17,17 @@ export class AuthController {
     @Post('/signin')
     // @UseGuards(AuthGuard())
     signIn(@Body(ValidationPipe) authCredentialsDtoSignin: AuthCredentialsDtoSignin): Promise< {accessToken: string}>{
-        // this.authService.getUserBag(authCredentialsDtoSignin.email)
-        console.log('?????:', authCredentialsDtoSignin);
-        console.log(1234);
-        
-        
+       
         return this.authService.signIn(authCredentialsDtoSignin);
     }
+
+    // @UseGuards(AuthGuard('facebook-token'))
+    @Get('/facebook')
+    async getTokenAfterFacebookSignIn(@Req() req) {
+      console.log(req);
+    //   return this.authService.findOrCreate(req)
+    }
+    //auth/facebook
 
    
 

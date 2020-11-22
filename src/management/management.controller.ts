@@ -4,14 +4,16 @@ import { Request } from 'express';
 
 @Controller('management')
 export class ManagementController {
-  constructor(private managementService: ManagementService) {}
+  constructor(private managementService: ManagementService) { }
 
-  @Get()
+  @Get('/:id')
   //  @UseGuards(AuthGuard())
-  getAllImeges(@Req() request: Request) {
-    console.log('req from management', request);
-    return null;
+  getAllImeges(
+    @Req() request: Request,
+    // @Param('subId',ParseIntPipe) subId: number,
+  ) {
+    console.log('req from management params:', request.params.id);
 
-    //  return this.managementService.getAllImegesBySubjectId(id)
+    return this.managementService.getAllImegesBySubjectId(request.params.id)
   }
 }
