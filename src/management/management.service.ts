@@ -4,6 +4,7 @@ import { ImgListRepository } from 'src/pic-main-list-subjects/img-list-repositor
 
 @Injectable()
 export class ManagementService {
+ 
   constructor(
     @InjectRepository(ImgListRepository)
     private imgListRepository: ImgListRepository,
@@ -14,5 +15,14 @@ export class ManagementService {
 
     query.where('img_list_by_subject.subId = :subId', { subId: subId });
     const images = await query.getMany();
-    return images  }
+    return images 
+   }
+
+   async deleteImg(id: number) {
+      return await this.imgListRepository.delete(id)
+  }
+
+  editImgDetails(id: number, img:{}) {
+    this.imgListRepository.update({id},img)
+  }
 }
