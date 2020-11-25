@@ -17,29 +17,40 @@ export class ManagementController {
 
   @Delete('/:id/:subId')
   deleteImg(
-    @Param() params:Request
-  ){
-    
+    @Param() params: Request
+  ) {
+
     return this.managementService.deleteImg(params['id'], params['subId'])
   }
 
   @Patch('/:id/:subId')
   editImgDetails(
-    @Param() params:Request,
+    @Param() params: Request,
     @Body('imgDetailsToUpdate') img,
   ) {
     console.log('immmmgg', img);
-    
-     return this.managementService.editImgDetails(params['id'], img, params['subId'])
+
+    return this.managementService.editImgDetails(params['id'], img, params['subId'])
   }
 
   @Post('')
   addImg(
     @Body('imgDataToAdd') imgDataToAdd,
-  ){
+  ) {
     // console.log('body:', imgDataToAdd);
     // console.log(imgDataToAdd);
     return this.managementService.addImg(imgDataToAdd)
 
+  }
+
+  @Post('sendemail')
+  sendEmailToClinet(
+    @Body('') body,
+
+  ) {
+    console.log('paymentForm body', body['paymentForm']);
+    console.log('userBag: body', body['userBag']);
+
+    return this.managementService.sendEmailToClinet(body['paymentForm'], body['userBag'])
   }
 }
