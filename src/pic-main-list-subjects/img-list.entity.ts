@@ -5,7 +5,7 @@ import { BaseEntity, Column, Entity, PrimaryColumn, PrimaryGeneratedColumn, Uniq
 export class ImgListBySubject extends BaseEntity{
     
 
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id:number;
 
     @Column()

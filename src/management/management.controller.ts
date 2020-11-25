@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Req } from '@nestjs/common';
 import { ManagementService } from './management.service';
 import { Request } from 'express';
 
@@ -10,28 +10,36 @@ export class ManagementController {
   //  @UseGuards(AuthGuard())
   getAllImeges(
     @Req() request: Request,
-    // @Param('subId',ParseIntPipe) subId: number,
   ) {
-    console.log('req from management params:', request.params.id);
 
     return this.managementService.getAllImegesBySubjectId(request.params.id)
   }
 
-  @Delete('/:id')
+  @Delete('/:id/:subId')
   deleteImg(
-    @Param('id', ParseIntPipe) id: number
+    @Param() params:Request
   ){
-    return this.managementService.deleteImg(id)
+    
+    return this.managementService.deleteImg(params['id'], params['subId'])
   }
 
-  @Patch('/:id')
+  @Patch('/:id/:subId')
   editImgDetails(
-    @Param('id', ParseIntPipe) id: number,
+    @Param() params:Request,
     @Body('imgDetailsToUpdate') img,
   ) {
-    console.log('id from mange controler',id);
-    console.log('img from mange controler',img);
+    console.log('immmmgg', img);
     
-     return this.managementService.editImgDetails(id, img)
+     return this.managementService.editImgDetails(params['id'], img, params['subId'])
+  }
+
+  @Post('')
+  addImg(
+    @Body('imgDataToAdd') imgDataToAdd,
+  ){
+    // console.log('body:', imgDataToAdd);
+    // console.log(imgDataToAdd);
+    return this.managementService.addImg(imgDataToAdd)
+
   }
 }

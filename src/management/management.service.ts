@@ -18,11 +18,20 @@ export class ManagementService {
     return images 
    }
 
-   async deleteImg(id: number) {
-      return await this.imgListRepository.delete(id)
+   async deleteImg(id: number, subId:number) {
+       await this.imgListRepository.delete(id)
+       return this.getAllImegesBySubjectId(subId)
   }
 
-  editImgDetails(id: number, img:{}) {
-    this.imgListRepository.update({id},img)
+ async editImgDetails(id: number, img:{},subId) {
+     await this.imgListRepository.update({id},img);
+     return this.getAllImegesBySubjectId(subId)
+  }
+
+async addImg(imgDataToAdd) {
+  console.log('imgDataToAdd service',imgDataToAdd);
+  
+  await this.imgListRepository.save(imgDataToAdd);
+  return this.getAllImegesBySubjectId(imgDataToAdd.subId)
   }
 }
