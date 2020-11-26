@@ -39,20 +39,19 @@ export class ManagementService {
   }
 
   public sendEmailToClinet(paymentForm, userBag) {
-    sgMail.setApiKey('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')
+    // sgMail.setApiKey('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')//first
+    sgMail.setApiKey('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')//seconde
     const msg = {
-      to: 'rivkalecover@gmail.com', // Change to your recipient
-      from: 'asherlec5@gmail.com', // Change to your verified sender
+      to: 'asherlec5@gmail.com', // Change to your recipient
+      from: 'rivkalecover@gmail.com', // Change to your verified sender
       subject: 'Pic Picutre',
       text: 'להלן פרטי ההזמנה שלך',
-      html: `
-      <h1>סל הקניות</h1>
+      html:
+        `<h1>סל הקניות</h1>
       <ul>
-      <li>{{paymentForm.email}}</li>
-      </ul>
-      
-      
-      `,
+      <li>%paymentForm.email%</li>
+      </ul>`
+      ,
     }
     sgMail
       .send(msg)
