@@ -28,7 +28,6 @@ export class ManagementController {
     @Param() params: Request,
     @Body('imgDetailsToUpdate') img,
   ) {
-    console.log('immmmgg', img);
 
     return this.managementService.editImgDetails(params['id'], img, params['subId'])
   }
@@ -48,8 +47,8 @@ export class ManagementController {
     @Body('') body,
 
   ) {
-    console.log('paymentForm body', body['paymentForm']);
-    console.log('userBag: body', body['userBag']);
+    // console.log('paymentForm body', body['paymentForm']);
+    // console.log(body['userBag']);
 
     return this.managementService.sendEmailToClinet(body['paymentForm'], body['userBag'])
   }

@@ -6,9 +6,39 @@ import { ShppingCartRepository } from 'src/shpping-cart/shpping-cart-repository'
 import { ImgRep } from 'src/subjects-images-data/imgRepo';
 import { ManagementController } from './management.controller';
 import { ManagementService } from './management.service';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
+import { PugAdapter } from '@nest-modules/mailer/dist/adapters/pug.adapter';
+
 
 @Module({
   imports: [
+    MailerModule.forRoot({
+      transport: {
+        host: 'smtp.gmail.com',
+        port: 587,
+        service: 'Gmail',
+        secure: false, // true for 465, false for other ports
+        auth: {
+          user: 'asherlec5@gmail.com', // generated ethereal user
+          pass: '025808561' // generated ethereal password
+        },
+        tls: {
+          rejectUnauthorized: false
+      }
+      },
+      defaults: {
+        from: '"nest-modules" asherlec5@gmail.com', // outgoing email ID
+      },
+      template: {
+        dir: process.cwd() + '/template/',
+        adapter: new PugAdapter(), // or new PugAdapter()
+        options: {
+          strict: true,
+        },
+      },
+    }),
+    
     TypeOrmModule.forFeature([
       ImgRep,
       ShppingCartRepository,
