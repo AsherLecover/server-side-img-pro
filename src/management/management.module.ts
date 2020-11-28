@@ -21,12 +21,12 @@ import * as dotenv from 'dotenv';
         service: 'Gmail',
         secure: false, // true for 465, false for other ports
         auth: {
-          user: 'ssfbzxbngd@gmail.com', // generated ethereal user
-          pass: '0d2f5w8g08sg5g61' // generated ethereal password
+          user: 'picpictureservice@gmail.com', // generated ethereal user
+          pass: 'qetu1357' // generated ethereal password
         },
         tls: {
           rejectUnauthorized: false
-      }
+        }
       },
       defaults: {
         from: '"nest-modules" asherlec5@gmail.com', // outgoing email ID
@@ -39,7 +39,7 @@ import * as dotenv from 'dotenv';
         },
       },
     }),
-    
+
     TypeOrmModule.forFeature([
       ImgRep,
       ShppingCartRepository,
@@ -51,4 +51,4 @@ import * as dotenv from 'dotenv';
   controllers: [ManagementController],
   providers: [ManagementService],
 })
-export class ManagementModule {}
+export class ManagementModule { }

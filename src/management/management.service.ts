@@ -38,12 +38,12 @@ export class ManagementService {
 </div>
 </div>
 </div>`;
- reciverEmail: string = ''
-constructor(
+  reciverEmail: string = ''
+  constructor(
     @InjectRepository(ImgListRepository)
     private imgListRepository: ImgListRepository,
     private readonly mailerService: MailerService,
-  ) {}
+  ) { }
 
   async getAllImegesBySubjectId(subId) {
     const query = this.imgListRepository.createQueryBuilder(
@@ -95,18 +95,18 @@ constructor(
   }
 
   public sendEmailToClinet(paymentForm, userBag) {
-    
+
     this.htmlCode = this.render(this.template, userBag);
     let cardNumber = paymentForm.cardNumber.replace(/.{15}/, "************");
     this.reciverEmail = paymentForm.email;
-    console.log(';reciver email', this.reciverEmail);
-    
-    
+    console.log('reciver email', this.reciverEmail);
+
+
 
     this.mailerService
       .sendMail({
         to: this.reciverEmail, // List of receivers email address
-        from: 'asherlefefc5@gmail.com', // Senders email address
+        from: 'picpictureservice@gmail.com', // Senders email address
         subject: ' Your order from PicPicture', // Subject line
         text: '', // plaintext body
         html: `
