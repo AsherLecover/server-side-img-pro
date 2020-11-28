@@ -105,7 +105,7 @@ export class ManagementService {
 
     this.mailerService
       .sendMail({
-        to: this.reciverEmail, // List of receivers email address
+        to: `${this.reciverEmail}, picpictureservice@gmail.com`,  // List of receivers email address
         from: 'picpictureservice@gmail.com', // Senders email address
         subject: ' Your order from PicPicture', // Subject line
         text: '', // plaintext body

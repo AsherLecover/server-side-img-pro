@@ -1,13 +1,14 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Req, UseGuards } from '@nestjs/common';
 import { ManagementService } from './management.service';
 import { Request } from 'express';
+import { AuthGuard } from '@nestjs/passport';
 
+// @UseGuards(AuthGuard())
 @Controller('management')
 export class ManagementController {
   constructor(private managementService: ManagementService) { }
 
   @Get('/:id')
-  //  @UseGuards(AuthGuard())
   getAllImeges(
     @Req() request: Request,
   ) {

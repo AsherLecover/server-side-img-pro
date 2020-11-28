@@ -22,14 +22,14 @@ import * as dotenv from 'dotenv';
         secure: false, // true for 465, false for other ports
         auth: {
           user: 'picpictureservice@gmail.com', // generated ethereal user
-          pass: 'qetu1357' // generated ethereal password
+          pass: 'lollollollollollollollollololololololololololololololololol' // generated ethereal password
         },
         tls: {
           rejectUnauthorized: false
         }
       },
       defaults: {
-        from: '"nest-modules" asherlec5@gmail.com', // outgoing email ID
+        from: '"nest-modules" picpictureservice@gmail.com', // outgoing email ID
       },
       template: {
         dir: process.cwd() + '/template/',
