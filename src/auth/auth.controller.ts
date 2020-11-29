@@ -32,6 +32,8 @@ export class AuthController {
   signIn(
     @Body(ValidationPipe) authCredentialsDtoSignin: AuthCredentialsDtoSignin,
   ): Promise<{ accessToken: string }> {
+    // console.log('controler sign innnnnn::: ',authCredentialsDtoSignin);
+    
     return this.authService.signIn(authCredentialsDtoSignin);
   }
 
@@ -44,7 +46,7 @@ export class AuthController {
   @Get('facebook/redirect')
   @UseGuards(AuthGuard('facebook'))
   async facebookLoginRedirect(@Req() req: Request): Promise<any> {
-    console.log(req.user);
+    // console.log(req.user);
 
     return {
       statusCode: HttpStatus.OK,

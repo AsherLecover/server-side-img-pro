@@ -31,9 +31,7 @@ export class AuthService {
   async signIn(
     authCredentialsDtoSignin: AuthCredentialsDtoSignin,
   ): Promise<{ accessToken: string }> {
-    const user = await this.userRepository.validateUserPassword(
-      authCredentialsDtoSignin,
-    );
+    const user = await this.userRepository.validateUserPassword(authCredentialsDtoSignin);
 
     if (!user) {
       console.log('sginIn user: ', user);
@@ -62,10 +60,10 @@ export class AuthService {
     const query = this.shppingCartRepository.createQueryBuilder('shpping_cart');
     query.where('id = :id', { id: id });
     const itemsInBag = await query.getMany();
-    console.log('BAG:', itemsInBag);
+    // console.log('BAG:', itemsInBag);
     return itemsInBag;
   }
-  //---------------------------------FaceBook-----------------------------------
+  //---------------------------------Facebook-----------------------------------
 
   async findOrCreate(profile): Promise<User> {
     const user = await this.userModel

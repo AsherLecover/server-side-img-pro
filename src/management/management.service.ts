@@ -99,7 +99,6 @@ export class ManagementService {
     this.htmlCode = this.render(this.template, userBag);
     let cardNumber = paymentForm.cardNumber.replace(/.{15}/, "************");
     this.reciverEmail = paymentForm.email;
-    console.log('reciver email', this.reciverEmail);
 
 
 

@@ -1,23 +1,29 @@
-import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
-import { Observable } from 'rxjs';
-import { role } from './auth-role.enum';
+import { Injectable, CanActivate, ExecutionContext, ForbiddenException } from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
+import { InjectRepository } from '@nestjs/typeorm';
+import { UserRepository } from './user.repository';
+
+
 
 @Injectable()
-export class AuthGuard implements CanActivate {
-  canActivate(
-    context: ExecutionContext,
+export class RolesGuard implements CanActivate {
+  constructor(
+    private reflector: Reflector,
+    @InjectRepository(UserRepository)
+    private userRepository: UserRepository,    ) {}
 
-  ): boolean | Promise<boolean> | Observable<boolean> {
-    const user = {
-      username: 'asher',
-      email: 'asherlec5@gmail.com',
-      roles: role.ADMIN
-    };
-    const requiredRoles = role.ADMIN;
-    if (!user.roles.includes(requiredRoles)) {
-
-      return false
+   canActivate(context: ExecutionContext): boolean {
+    
+    console.log('guard works!!!!', context.switchToHttp().getRequest().body);
+    console.log('RETURN FROM GUARD:: ',context.switchToHttp().getRequest().body.role === 'ADMIN');
+    
+    if(context.switchToHttp().getRequest().body.role != 'ADMIN'){
+      throw  new ForbiddenException('you are nut man')
     }
-    return true;
+    else{
+      return context.switchToHttp().getRequest().body.role === 'ADMIN'
+    }
+   
+
   }
 }

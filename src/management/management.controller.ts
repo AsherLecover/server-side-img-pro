@@ -2,16 +2,21 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Req, U
 import { ManagementService } from './management.service';
 import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
+import { Roles } from 'src/auth/roles.decorator';
+import { RolesGuard } from 'src/auth/auth.guard';
 
-// @UseGuards(AuthGuard())
+@UseGuards(RolesGuard)
+@Roles('ADMIN')
 @Controller('management')
 export class ManagementController {
   constructor(private managementService: ManagementService) { }
 
-  @Get('/:id')
+  @Post('/:id')
   getAllImeges(
     @Req() request: Request,
   ) {
+    console.log('request.user FROM CONTROLER:', request.body);
+    
 
     return this.managementService.getAllImegesBySubjectId(request.params.id)
   }

@@ -8,7 +8,7 @@ import { role } from "./auth-role.enum";
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
-    role:role =  role.CLINET
+    role:role = role.CLINET
 
 
 
