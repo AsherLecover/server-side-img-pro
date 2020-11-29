@@ -15,7 +15,8 @@ export class SubjectsImagesDataController {
     }
     @Get('')
     getAllImeges() {
-        return this.subjectsImagesDataService.getAllImeges()
+        
+       return this.subjectsImagesDataService.getAllImeges()
     }
     @Post()
     getUserBag(

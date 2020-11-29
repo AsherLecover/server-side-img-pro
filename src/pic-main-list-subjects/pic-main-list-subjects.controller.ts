@@ -16,12 +16,11 @@ export class PicMainListSubjectsController {
     }
     
     @Get('/:id')
-    //  @UseGuards(AuthGuard())
      getAllImeges(
         @Req() request: Request,
         @Param('id', ParseIntPipe) id: number,
      ){
-         console.log('all images main list');
+         console.log('all images main lis');
          return this.picMainListSubjectsService.getAllImegesBySubjectId(id)
     }
 

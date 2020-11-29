@@ -33,18 +33,18 @@ export class SubjectsImagesDataService {
         //     JOIN img_list_by_subject as imgs
         //     ON shp.img_id = imgs.id
         //     WHERE user_id = ${user_id}`);
-
-        const query = await this.shppingCartRepository
-            .createQueryBuilder()
-            .where('ShppingCart.user_id = ' + user_id)
-            .leftJoinAndMapOne(
-                'ShppingCart.imgdata',
-                'ImgListBySubject',
-                'img',
-                'ShppingCart.img_id = img.id',
-            )
-            .getMany();
-
-        return await query;
+        if(user_id){
+            const query = await this.shppingCartRepository
+                .createQueryBuilder()
+                .where('ShppingCart.user_id = ' + user_id)
+                .leftJoinAndMapOne(
+                    'ShppingCart.imgdata',
+                    'ImgListBySubject',
+                    'img',
+                    'ShppingCart.img_id = img.id',
+                )
+                .getMany();
+                return await query;
+        }
     }
 }
