@@ -17,7 +17,7 @@ export class ImgRep extends Repository<cardImgList> {
             { "img_id": 4, "imgUrl": "https://besttv232-ynet-images1-prod.cdn.it.best-tv.com/PicServer5/2018/09/20/8781684/877160001001590640360no.jpg", "subject": "תמונות של ים" },
             { "img_id": 5, "imgUrl": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", "subject": " אורבני" },
             { "img_id": 6, "imgUrl": "https://i2.wp.com/liss-ms.com/wp-content/uploads/2015/06/6777504-black-and-white-wallpaper.jpg?ssl=1", "subject": "שחור לבן" },
-            { "img_id": 7, "imgUrl": "https://www.parks.org.il/wp-content/themes/joomi/inc/imgp.php?src=https://static.parks.org.il/wp-content/uploads/2020/06/%D7%90%D7%99%D7%AA%D7%9E%D7%A8-%D7%9B%D7%95%D7%9B%D7%91%D7%99-%D7%96%D7%A8%D7%99%D7%97%D7%94.jpeg&width=1176&co=8&q=60", "subject": "זריחות ושקיעות " },
+            { "img_id": 7, "imgUrl": "https://lh3.googleusercontent.com/proxy/S44slZ87ParSPayXG-0p2ZRvM1WXLPx2FOzHlOyq2C9YH6cPZ4Xr9PAj1reQdbV-tUTpBIofTcQCuyIr6E0dJSSEFhClQbcZe5ACBj05hjee9vnf4EDcP5UnwA", "subject": "זריחות ושקיעות " },
             { "img_id": 8, "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT66N63CLoVdE2W1vcUBlj3CFe4rcT-tawsrQ&usqp=CAU", "subject": " פרחים" },
             { "img_id": 9, "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRrKvVmu7N0GrQSgR-Pq7Cp6756GRZmipNdlg&usqp=CAU", "subject": "תמונות לפינת אוכל" },
             { "img_id": 10, "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT6PYuU7u1UGi1HvUn8erehjb-Ba70hmzyMOQ&usqp=CAU", "subject": " פריחה" },
