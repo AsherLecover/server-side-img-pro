@@ -22,7 +22,7 @@ import * as dotenv from 'dotenv';
         secure: false, // true for 465, false for other ports
         auth: {
           user: 'picpictureservice@gmail.com', // generated ethereal user
-          pass: 'lollollollollollollollol you think you haker??!!!! (- ;' // generated ethereal password
+          pass: 'qetu1357' // generated ethereal password
         },
         tls: {
           rejectUnauthorized: false

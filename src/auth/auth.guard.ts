@@ -10,14 +10,17 @@ export class RolesGuard implements CanActivate {
   constructor(
     private reflector: Reflector,
     @InjectRepository(UserRepository)
-    private userRepository: UserRepository,    ) {}
+    private userRepository: UserRepository) {}
 
    canActivate(context: ExecutionContext): boolean {
     
     console.log('guard works!!!!', context.switchToHttp().getRequest().body);
     console.log('RETURN FROM GUARD:: ',context.switchToHttp().getRequest().body.role === 'ADMIN');
+    console.log(879870978087);
     
-    if(context.switchToHttp().getRequest().body.role != 'ADMIN'){
+    
+    
+    if(context.switchToHttp().getRequest().body.role != 'ADMIN' ){
       throw  new ForbiddenException('you are nut man')
     }
     else{

@@ -11,7 +11,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ManagementService } from './management.service';
-import { Request } from 'express';
+import { request, Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 import { Roles } from 'src/auth/roles.decorator';
 import { RolesGuard } from 'src/auth/auth.guard';
@@ -22,9 +22,10 @@ export class ManagementController {
 
   @UseGuards(RolesGuard)
   @Roles('ADMIN')
-  @Get('/:id')
-  getAllImeges(@Req() request: Request) {
-    console.log('request.user:::', request.user);
+  @Post('/:id')
+  getAllImeges(
+    @Req() request: Request
+  ) {
 
     return this.managementService.getAllImegesBySubjectId(request.params.id);
   }
@@ -32,13 +33,20 @@ export class ManagementController {
   @UseGuards(RolesGuard)
   @Roles('ADMIN')
   @Delete('/:id/:subId')
-  deleteImg(@Param() params: Request) {
+  deleteImg(@Param() params: Request,
+  @Req() request: Request) {
     return this.managementService.deleteImg(params['id'], params['subId']);
   }
+
+
   @UseGuards(RolesGuard)
   @Roles('ADMIN')
   @Patch('/:id/:subId')
-  editImgDetails(@Param() params: Request, @Body('imgDetailsToUpdate') img) {
+  editImgDetails(
+    @Param() params: Request,
+     @Body('imgDetailsToUpdate') img,
+     @Req() request: Request) {
+       
     return this.managementService.editImgDetails(
       params['id'],
       img,
@@ -49,16 +57,12 @@ export class ManagementController {
   @Roles('ADMIN')
   @Post('')
   addImg(@Body('imgDataToAdd') imgDataToAdd) {
-    // console.log('body:', imgDataToAdd);
-    // console.log(imgDataToAdd);
     return this.managementService.addImg(imgDataToAdd);
   }
 
+
   @Post('sendemail')
   sendEmailToClinet(@Body('') body) {
-    // console.log('paymentForm body', body['paymentForm']);
-    // console.log(body['userBag']);
-
     return this.managementService.sendEmailToClinet(
       body['paymentForm'],
       body['userBag'],
