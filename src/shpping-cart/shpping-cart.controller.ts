@@ -15,7 +15,7 @@ export class ShppingCartController {
     @Body() shppingCartDto: ShppingCartDto,
     @Req() req: Request,
   ) {
-    console.log('req listtttt', req.body.list[0]);
+    console.log('req listtttt',    req.body.list[0]);
 
     await this.shppingCartService.addImgToBag(
       req.body.list[0].numOfItems,
