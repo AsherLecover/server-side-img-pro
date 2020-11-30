@@ -15,9 +15,7 @@ export class ManagementController {
   ) {
     console.log('paymentForm body', body['paymentForm']);
     console.log(body['userBag']);
-    console.log(7698768);
     
-
      return this.managementService.sendEmailToClinet(body['paymentForm'], body['userBag'])
   }
 
@@ -58,7 +56,8 @@ export class ManagementController {
   @Roles('ADMIN')
   @Post('')
   addImg(@Body('imgDataToAdd') imgDataToAdd) {
-    console.log('aronnnnnnnnnnn');
+    
+    console.log('aronnnnnnnnnnn', imgDataToAdd);
     
      return this.managementService.addImg(imgDataToAdd);
   }
