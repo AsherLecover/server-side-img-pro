@@ -14,9 +14,8 @@ export class RolesGuard implements CanActivate {
 
    canActivate(context: ExecutionContext): boolean {
     
-    console.log('guard works!!!!', context.switchToHttp().getRequest().body);
+    // console.log('guard works!!!!', context.switchToHttp().getRequest().body);
     console.log('RETURN FROM GUARD:: ',context.switchToHttp().getRequest().body.role === 'ADMIN');
-    console.log(879870978087);
     
     
     

@@ -1,15 +1,4 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  ParseIntPipe,
-  Patch,
-  Post,
-  Req,
-  UseGuards,
-} from '@nestjs/common';
+import {Body,Controller,Delete, Get, Param, ParseIntPipe, Patch,Post,Req, UseGuards} from '@nestjs/common';
 import { ManagementService } from './management.service';
 import { request, Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
@@ -19,6 +8,18 @@ import { RolesGuard } from 'src/auth/auth.guard';
 @Controller('management')
 export class ManagementController {
   constructor(private managementService: ManagementService) {}
+
+  @Post('sendemail')
+  sendEmailToClinet(
+    @Body('') body,
+  ) {
+    console.log('paymentForm body', body['paymentForm']);
+    console.log(body['userBag']);
+    console.log(7698768);
+    
+
+     return this.managementService.sendEmailToClinet(body['paymentForm'], body['userBag'])
+  }
 
   @UseGuards(RolesGuard)
   @Roles('ADMIN')
@@ -57,15 +58,11 @@ export class ManagementController {
   @Roles('ADMIN')
   @Post('')
   addImg(@Body('imgDataToAdd') imgDataToAdd) {
-    return this.managementService.addImg(imgDataToAdd);
+    console.log('aronnnnnnnnnnn');
+    
+     return this.managementService.addImg(imgDataToAdd);
   }
 
 
-  @Post('sendemail')
-  sendEmailToClinet(@Body('') body) {
-    return this.managementService.sendEmailToClinet(
-      body['paymentForm'],
-      body['userBag'],
-    );
-  }
+
 }

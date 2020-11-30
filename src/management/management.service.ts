@@ -3,7 +3,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { totalmem } from 'os';
 import { ImgListRepository } from 'src/pic-main-list-subjects/img-list-repository';
-import * as pug from '../../node_modules/pug';
 
 const sgMail = require('@sendgrid/mail');
 
@@ -45,7 +44,7 @@ export class ManagementService {
     private readonly mailerService: MailerService,
   ) { }
 
-  async getAllImegesBySubjectId(subId) {
+  async getAllImegesBySubjectId(subId ) {
     const query = this.imgListRepository.createQueryBuilder(
       'img_list_by_subject',
     );
