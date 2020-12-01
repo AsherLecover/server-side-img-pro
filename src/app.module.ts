@@ -13,6 +13,8 @@ import { ShppingCartModule } from './shpping-cart/shpping-cart.module';
 import { ManagementController } from './management/management.controller';
 import { ManagementService } from './management/management.service';
 import { ManagementModule } from './management/management.module';
+import { ContactUsController } from './contact-us/contact-us.controller';
+import { ContactUsModule } from './contact-us/contact-us.module';
 
 
 @Module({
@@ -23,7 +25,8 @@ import { ManagementModule } from './management/management.module';
     PicMainListSubjectsModule,
     ImgDetailsModule,
     ShppingCartModule,
-    ManagementModule],
+    ManagementModule,
+    ContactUsModule],
   controllers: [AppController],
   providers: [AppService],
 })
