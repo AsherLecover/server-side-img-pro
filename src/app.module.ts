@@ -15,6 +15,9 @@ import { ManagementService } from './management/management.service';
 import { ManagementModule } from './management/management.module';
 import { ContactUsController } from './contact-us/contact-us.controller';
 import { ContactUsModule } from './contact-us/contact-us.module';
+import { ImgHomeLivingRoomController } from './img-home-living-room/img-home-living-room.controller';
+import { ImgHomeLivingRoomService } from './img-home-living-room/img-home-living-room.service';
+import { ImgHomeLivingRoomModule } from './img-home-living-room/img-home-living-room.module';
 
 
 @Module({
@@ -26,7 +29,8 @@ import { ContactUsModule } from './contact-us/contact-us.module';
     ImgDetailsModule,
     ShppingCartModule,
     ManagementModule,
-    ContactUsModule],
+    ContactUsModule,
+    ImgHomeLivingRoomModule],
   controllers: [AppController],
   providers: [AppService],
 })
