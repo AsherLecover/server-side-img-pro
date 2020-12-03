@@ -17,10 +17,11 @@ export class PicMainListSubjectsController {
     
     @Get('/:id')
      getAllImeges(
-        @Req() request: Request,
         @Param('id', ParseIntPipe) id: number,
      ){
-         console.log('all images main lis');
+         console.log('ENV', typeof process.env.PASS);
+         console.log(124141412);
+         
          return this.picMainListSubjectsService.getAllImegesBySubjectId(id)
     }
 
