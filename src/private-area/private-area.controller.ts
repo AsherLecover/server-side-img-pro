@@ -8,23 +8,21 @@ export class PrivateAreaController {
 
     constructor(private privateAreaService: PrivateAreaService){}
 
-    @Post('/:id')
-  getAllImeges(
+    @Post('')
+  getAllImegesByUserId(
     @Req() request: Request,
-    @Param('id') params: Request,
   ) {
-      console.log('private area body: ', request.body.id);
-      console.log('private area params: ', params);
-   return this.privateAreaService.getAllImegesBySubjectId(params,request.body.id);
+      console.log('private area body: ', request);
+   return this.privateAreaService.getAllImegesByUserId(request.body.id);
   }
 
   
-  @Post('')
-  addImg(
-      @Body('imgDataToAdd') imgDataToAdd) {
+  // @Post('')
+  // addImg(
+  //     @Body('imgDataToAdd') imgDataToAdd) {
     
-    console.log('aronnnnnnnnnnn', imgDataToAdd);
+  //   console.log('aronnnnnnnnnnn', imgDataToAdd);
     
-     return this.privateAreaService.addImg(imgDataToAdd);
-  }
+  //    return this.privateAreaService.addImg(imgDataToAdd);
+  // }
 }

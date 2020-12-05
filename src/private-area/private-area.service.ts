@@ -10,21 +10,18 @@ export class PrivateAreaService {
         private imgListRepository: ImgListRepository,
     ) { }
 
-    async getAllImegesBySubjectId(subId: any, ownerId: number) {
- const query = this.imgListRepository.createQueryBuilder(
-      'img_list_by_subject',
-    );
+    async getAllImegesByUserId(ownerId: number) {
+ const query = this.imgListRepository.createQueryBuilder('img_list_by_subject');
 
-    query.where('img_list_by_subject.subId = :subId', { subId: subId })
-    .andWhere('img_list_by_subject.ownerId = :ownerId',{ ownerId: ownerId });
+    query.where('img_list_by_subject.ownerId = :ownerId',{ ownerId: ownerId });
     const images = await query.getMany();
     return images;  
   }
 
   async addImg(imgDataToAdd) {
 
-    await this.imgListRepository.save(imgDataToAdd);
-    return this.getAllImegesBySubjectId(imgDataToAdd.subId, 2);
+    // await this.imgListRepository.save(imgDataToAdd);
+    // return this.getAllImegesBySubjectId(imgDataToAdd.subId, 2);
   }
 }
 
