@@ -4,7 +4,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { totalmem } from 'os';
 import { ImgListRepository } from 'src/pic-main-list-subjects/img-list-repository';
 
-const sgMail = require('@sendgrid/mail');
 
 @Injectable()
 export class ManagementService {

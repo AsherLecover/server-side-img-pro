@@ -32,7 +32,8 @@ export class ManagementController {
   @UseGuards(RolesGuard)
   @Roles('ADMIN')
   @Delete('/:id/:subId')
-  deleteImg(@Param() params: Request,
+  deleteImg(
+    @Param() params: Request,
   @Req() request: Request) {
     return this.managementService.deleteImg(params['id'], params['subId']);
   }

@@ -9,6 +9,9 @@ export class ImgListBySubject extends BaseEntity{
     id:number;
 
     @Column()
+    ownerId: number;
+
+    @Column()
     imagesSubject: string;
     
     @Column()
