@@ -27,7 +27,7 @@ export class ContactUsService {
 
     this.mailerService
     .sendMail({
-      to: `${email}, picpictureservice@gmail.com`,  // List of receivers email address
+      to: `${email}, ${process.env.EMAIL}`,  // List of receivers email address
       from: 'picpictureservice@gmail.com', // Senders email address
       subject: ' PicPicture טופס יצירת קשר   ', // Subject line
       text: '', // plaintext body
