@@ -4,25 +4,37 @@ import { ImgListRepository } from 'src/pic-main-list-subjects/img-list-repositor
 
 @Injectable()
 export class PrivateAreaService {
+  constructor(
+    @InjectRepository(ImgListRepository)
+    private imgListRepository: ImgListRepository,
+  ) {}
 
-    constructor(
-        @InjectRepository(ImgListRepository)
-        private imgListRepository: ImgListRepository,
-    ) { }
+  async getAllSubjectImgesById(subId){
+    const query = this.imgListRepository.createQueryBuilder('img_list_by_subject');
 
-    async getAllImegesByUserId(ownerId: number) {
- const query = this.imgListRepository.createQueryBuilder('img_list_by_subject');
-
-    query.where('img_list_by_subject.ownerId = :ownerId',{ ownerId: ownerId });
+    query.where('img_list_by_subject.subId = :subId', { subId: subId });
     const images = await query.getMany();
-    return images;  
+    return images;
+
   }
 
-  async addImg(imgDataToAdd) {
+  async getAllImegesByUserId(ownerId: number) {
+    const query = this.imgListRepository.createQueryBuilder(
+      'img_list_by_subject',
+    );
 
-    // await this.imgListRepository.save(imgDataToAdd);
-    // return this.getAllImegesBySubjectId(imgDataToAdd.subId, 2);
+    query.where('img_list_by_subject.ownerId = :ownerId', { ownerId: ownerId });
+    const images = await query.getMany();
+    return images;
+  }
+
+  async addImg(imgDataToAdd, ownerId) {
+    await this.imgListRepository.save(imgDataToAdd);
+    return this.getAllImegesByUserId(ownerId);
+  }
+
+  async deleteImg(imgId){
+    await this.imgListRepository.delete(imgId)
+
   }
 }
-
-
