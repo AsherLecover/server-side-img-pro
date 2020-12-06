@@ -33,7 +33,7 @@ export class ManagementController {
   @Roles('ADMIN')
   @Delete('/:id/:subId')
   deleteImg(
-    @Param() params: Request,
+  @Param() params: Request,
   @Req() request: Request) {
     return this.managementService.deleteImg(params['id'], params['subId']);
   }

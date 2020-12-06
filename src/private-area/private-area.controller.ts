@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Req } from '@nestjs/common';
 import { PrivateAreaService } from './private-area.service';
 import { Request } from 'express';
 
@@ -35,7 +35,20 @@ export class PrivateAreaController {
     @Param('id') params: Request,
      @Req() request: Request) {
        console.log('params::::', params);
+       console.log('request::::', request.body.user.id);
        
-   return this.privateAreaService.deleteImg(params);
+   return this.privateAreaService.deleteImg(params, request.body.user.id);
+  }
+
+  @Patch('/:id/:userId')
+  editImgDetails(
+    @Param() params: Request,
+     @Body('imgDetailsToUpdate') img) {
+       console.log('paaarrrmasss:', params['id']);
+       console.log('paaarrrmasss:', params['userId']);
+       console.log('imgDetailsToUpdate:', img);
+       
+       
+    return this.privateAreaService.editImgDetails(params['id'], img, params['userId'] );
   }
 }

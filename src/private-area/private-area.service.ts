@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ImgListRepository } from 'src/pic-main-list-subjects/img-list-repository';
+import { PassThrough } from 'stream';
 
 @Injectable()
 export class PrivateAreaService {
+ 
   constructor(
     @InjectRepository(ImgListRepository)
     private imgListRepository: ImgListRepository,
@@ -33,8 +35,12 @@ export class PrivateAreaService {
     return this.getAllImegesByUserId(ownerId);
   }
 
-  async deleteImg(imgId){
-    await this.imgListRepository.delete(imgId)
+  async deleteImg(imgId, userId){
 
+    await this.imgListRepository.delete(imgId)
+    return this.getAllImegesByUserId(userId)
   }
+  async editImgDetails(id: number, img: any, userId) {
+    await this.imgListRepository.update({ id }, img);
+    return this.getAllImegesByUserId(userId);  }
 }
