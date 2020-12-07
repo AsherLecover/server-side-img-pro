@@ -12,11 +12,7 @@ import { ManagementModule } from './management/management.module';
 import { ContactUsModule } from './contact-us/contact-us.module';
 import { ImgHomeLivingRoomModule } from './img-home-living-room/img-home-living-room.module';
 import { ConfigModule } from '@nestjs/config';
-import { PrivateAreaController } from './private-area/private-area.controller';
-import { PrivateAreaService } from './private-area/private-area.service';
 import { PrivateAreaModule } from './private-area/private-area.module';
-import { ChatMessagesController } from './chat-messages/chat-messages.controller';
-import { ChatMessagesService } from './chat-messages/chat-messages.service';
 import { ChatMessagesModule } from './chat-messages/chat-messages.module';
 
 
