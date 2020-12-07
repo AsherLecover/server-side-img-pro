@@ -1,5 +1,6 @@
 import { TypeOrmModule, TypeOrmModuleOptions } from "@nestjs/typeorm";
 import { User } from "src/auth/user.entity";
+import { ChatMessages } from "src/chat-messages/chat-messages-entity";
 import { ContactUs } from "src/contact-us/contact-us.entity";
 import { ImgListBySubject } from "src/pic-main-list-subjects/img-list.entity";
 import { ShppingCart } from "src/shpping-cart/shpping-cart-entity";
@@ -15,7 +16,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
     database: 'img_project',
     // logging:true,
     // entities: [__dirname + '/../**/*.entity.{js,ts}',ShppingCart,ContactUsEntity ],
-    entities: [ShppingCart,ContactUs, User, ImgListBySubject, cardImgList],
+    entities: [ShppingCart,ContactUs, User, ImgListBySubject, cardImgList, ChatMessages],
     synchronize: true
 };
  
