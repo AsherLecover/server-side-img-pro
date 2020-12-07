@@ -13,6 +13,28 @@ export class User extends BaseEntity{
     id: number;
 
     @Column()
+    imgProfile: string = "https://www.w3schools.com/w3images/avatar2.png";
+
+    @Column({nullable: true})
+    profession:string;
+
+    
+    @Column({nullable: true})
+    instagram_link:string;
+
+    
+    @Column({nullable: true})
+    facebook_link:string;
+
+    
+    @Column({nullable: true})
+    linkedin_link:string;
+
+    
+    @Column({nullable: true})
+    twitter_link:string;
+
+    @Column()
     role: role;
 
     @Column()

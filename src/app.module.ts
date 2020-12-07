@@ -15,6 +15,9 @@ import { ConfigModule } from '@nestjs/config';
 import { PrivateAreaController } from './private-area/private-area.controller';
 import { PrivateAreaService } from './private-area/private-area.service';
 import { PrivateAreaModule } from './private-area/private-area.module';
+import { ChatMessagesController } from './chat-messages/chat-messages.controller';
+import { ChatMessagesService } from './chat-messages/chat-messages.service';
+import { ChatMessagesModule } from './chat-messages/chat-messages.module';
 
 
 
@@ -32,7 +35,8 @@ import { PrivateAreaModule } from './private-area/private-area.module';
     ManagementModule,
     ContactUsModule,
     ImgHomeLivingRoomModule,
-    PrivateAreaModule],
+    PrivateAreaModule,
+    ChatMessagesModule],
   controllers: [AppController],
   providers: [AppService],
 })

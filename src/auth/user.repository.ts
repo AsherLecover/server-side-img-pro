@@ -21,6 +21,8 @@ export class UserRepository extends Repository<User> {
             this.role = role.CLINET
         }
 
+        
+
         const user = new User();
         user.username = username;
         user.role = this.role;
@@ -45,12 +47,37 @@ export class UserRepository extends Repository<User> {
         }
     }
 
-    async validateUserPassword(authCredentialsDtoSignin: AuthCredentialsDtoSignin): Promise<{id: number, role: role, username: string, email:string}>{
+    
+    
+
+    async validateUserPassword(authCredentialsDtoSignin: AuthCredentialsDtoSignin):
+     Promise<{
+        id: number,
+        role: role,
+        username: string,
+        email:string,
+        imgProfile: string,
+        profession:string,
+        instagram_link:string,
+        facebook_link:string,
+        linkedin_link:string,
+        twitter_link:string}>{
         const { email, password } = authCredentialsDtoSignin;
         const user = await this.findOne({email});
 
         if(user && await user.validatePassword(password)){
-            return {id: user.id, role: user.role, username: user.username ,email: user.email};
+            return {
+                id: user.id,
+                 role: user.role,
+                  username: user.username,
+                  email: user.email,
+                  imgProfile: user.imgProfile,
+                  profession: user.profession,
+                  instagram_link: user.instagram_link,
+                  facebook_link: user.facebook_link,
+                  linkedin_link: user.linkedin_link,
+                  twitter_link: user.twitter_link
+                };
         }
         else{
             return null;

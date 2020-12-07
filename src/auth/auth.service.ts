@@ -18,11 +18,10 @@ export class AuthService {
     @InjectRepository(UserRepository)
     private userRepository: UserRepository,
 
-
     private jwtService: JwtService,
     @InjectRepository(ShppingCartRepository)
-    private readonly shppingCartRepository: Repository<ShppingCartRepository>
-  ) { }
+    private readonly shppingCartRepository: Repository<ShppingCartRepository>,
+  ) {}
 
   async signUp(authCredentialsDto: AuthCredentialsDto): Promise<void> {
     return this.userRepository.signUp(authCredentialsDto);
@@ -31,7 +30,9 @@ export class AuthService {
   async signIn(
     authCredentialsDtoSignin: AuthCredentialsDtoSignin,
   ): Promise<{ accessToken: string }> {
-    const user = await this.userRepository.validateUserPassword(authCredentialsDtoSignin);
+    const user = await this.userRepository.validateUserPassword(
+      authCredentialsDtoSignin,
+    );
 
     if (!user) {
       console.log('sginIn user: ', user);
@@ -40,18 +41,41 @@ export class AuthService {
 
     if (user) {
     }
+
+    // id: number;
+    // role: role;
+    // username: string;
+    // email: string;
+    // imgProfile: string;
+    // profession:string;
+    // instagram_link:string;
+    // facebook_link:string;
+    // linkedin_link:string;
+    // twitter_link:string;
+
+    // imgProfile: string;
+    // profession:string;
+    // instagram_link:string;
+    // facebook_link:string;
+    // linkedin_link:string;
+    // twitter_link:string;
+
     const payload: JwtPayload = {
       id: user.id,
       role: user.role,
       username: user.username,
       email: user.email,
+      imgProfile: user.imgProfile,
+      profession: user.profession,
+      instagram_link: user.instagram_link,
+      facebook_link: user.facebook_link,
+      linkedin_link: user.linkedin_link,
+      twitter_link: user.twitter_link,
     };
     const accessToken = await this.jwtService.sign(payload);
     setTimeout(() => {
-      this.getUserBag(user.id)
+      this.getUserBag(user.id);
     }, 5000);
-
-
 
     return { accessToken };
   }

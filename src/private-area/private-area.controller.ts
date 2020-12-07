@@ -23,10 +23,6 @@ export class PrivateAreaController {
     @Param('id') params: Request,
     @Body('imgDataToAdd') imgDataToAdd,
   ) {
-    console.log('params:', params);
-    
-    console.log('imgDataToAdd', imgDataToAdd);
-
     return this.privateAreaService.addImg(imgDataToAdd,params);
   }
 
@@ -34,8 +30,6 @@ export class PrivateAreaController {
   deleteImg(
     @Param('id') params: Request,
      @Req() request: Request) {
-       console.log('params::::', params);
-       console.log('request::::', request.body.user.id);
        
    return this.privateAreaService.deleteImg(params, request.body.user.id);
   }

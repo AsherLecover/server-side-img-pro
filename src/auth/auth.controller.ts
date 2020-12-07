@@ -28,11 +28,10 @@ export class AuthController {
   }
 
   @Post('/signin')
-  // @UseGuards(AuthGuard())
   signIn(
     @Body(ValidationPipe) authCredentialsDtoSignin: AuthCredentialsDtoSignin,
   ): Promise<{ accessToken: string }> {
-    // console.log('controler sign innnnnn::: ',authCredentialsDtoSignin);
+    console.log('controler sign innnnnn::: ',authCredentialsDtoSignin);
     
     return this.authService.signIn(authCredentialsDtoSignin);
   }
