@@ -7,12 +7,11 @@ export class ChatMessagesGateway {
 @WebSocketServer() wss:Server
 
   @SubscribeMessage('msgToServer')
-
-  handleMessage(client: Socket, text: string):void {
-    console.log(12453524, text);
+  handleMessage(client: Socket, paylowd: {senderId: number,  reciverId:number, text: string, time: Date}):void {
+    console.log(12453524, paylowd);
     
 
-    this.wss.emit('msgToClinet', text)
+    this.wss.emit('msgToClinet',paylowd)
 
     //return {event: 'msgToClinet', data: 'Hello World'};
   }

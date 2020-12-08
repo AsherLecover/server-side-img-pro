@@ -41,8 +41,18 @@ export class PrivateAreaController {
        console.log('paaarrrmasss:', params['id']);
        console.log('paaarrrmasss:', params['userId']);
        console.log('imgDetailsToUpdate:', img);
-       
-       
     return this.privateAreaService.editImgDetails(params['id'], img, params['userId'] );
+  }
+
+  @Get('')
+  getAllUsers(){
+    return this.privateAreaService.getAllUsers()
+  }
+
+  @Patch('')
+  setCardProfile(
+     @Body() data) {
+       console.log('dat:', data);
+    return this.privateAreaService.setCardProfile(data.data, data.userId);
   }
 }
