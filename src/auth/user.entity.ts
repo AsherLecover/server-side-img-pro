@@ -18,6 +18,8 @@ export class User extends BaseEntity{
     @Column({nullable: true})
     profession:string;
 
+    @Column({nullable: true})
+    about_you:string;
     
     @Column({nullable: true})
     instagram_link:string;

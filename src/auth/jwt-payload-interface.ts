@@ -6,6 +6,7 @@ export interface JwtPayload {
     username: string;
     email: string;
     imgProfile: string;
+    about_you:string;
     profession:string;
     instagram_link:string;
     facebook_link:string;

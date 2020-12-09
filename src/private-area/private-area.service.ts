@@ -56,23 +56,70 @@ export class PrivateAreaService {
       return users;
     }
 
-    async setCardProfile(data:string, id:number) {
+    async setCardProfile(data:string, id:number, colomnName: string) {
       console.log(data);
       console.log(id);
+      if(colomnName == 'imgProfile'){
+        const query = await this.userRepository.createQueryBuilder('user')
+        .update()
+        .set({ imgProfile: data })
+        .where("id = :id", { id: id })
+        .execute();
+      }
+      else if(colomnName == 'profession'){
+        const query = await this.userRepository.createQueryBuilder('user')
+        .update()
+        .set({ profession: data })
+        .where("id = :id", { id: id })
+        .execute();
+      }
 
-      const   query = await this.userRepository.createQueryBuilder('user')
-      .update()
-      .set({ imgProfile: data })
-      .where("id = :id", { id: id })
-      .execute();
+      else if(colomnName == 'about_you'){
+        const query = await this.userRepository.createQueryBuilder('user')
+        .update()
+        .set({ about_you: data })
+        .where("id = :id", { id: id })
+        .execute();
+      }
+
+      else if(colomnName == 'instagram_link'){
+        const query = await this.userRepository.createQueryBuilder('user')
+        .update()
+        .set({ instagram_link: data })
+        .where("id = :id", { id: id })
+        .execute();
+      }
+
+      else if(colomnName == 'facebook_link'){
+        const query = await this.userRepository.createQueryBuilder('user')
+        .update()
+        .set({ facebook_link: data })
+        .where("id = :id", { id: id })
+        .execute();
+      }
+
+      else if(colomnName == 'linkedin_link'){
+        const query = await this.userRepository.createQueryBuilder('user')
+        .update()
+        .set({ linkedin_link: data })
+        .where("id = :id", { id: id })
+        .execute();
+      }
+
+      else if(colomnName == 'twitter_link'){
+        const query = await this.userRepository.createQueryBuilder('user')
+        .update()
+        .set({ twitter_link: data })
+        .where("id = :id", { id: id })
+        .execute();
+      }
+
       return await this.userRepository.find({id})
 
-      // const query = this.userRepository.createQueryBuilder('user');
-      // query.set({ firstName: "Timber", lastName: "Saw" })
-      // query.where('user.id = :id', { id: id });   
+      
 
       
-      // await this.userRepository.update({ userId }, data);
+      
     }
 }
 

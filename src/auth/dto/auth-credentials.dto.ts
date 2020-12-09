@@ -44,6 +44,8 @@ export class AuthCredentialsDtoSignin {
 
   twitter_link: string
 
+  about_you:string
+
 }
 
 

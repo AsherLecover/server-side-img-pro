@@ -19,13 +19,16 @@ export class ChatMessages extends BaseEntity {
   id: number;
 
   @Column()
-  sender_id: number;
+  sender_id: string;
 
   @Column()
-  resiver_id: number;
+  resiver_id: string;
 
   @Column()
   message_text: string;
+
+  @Column()
+  time: string;
 
 
 }

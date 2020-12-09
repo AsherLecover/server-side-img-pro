@@ -66,6 +66,7 @@ export class AuthService {
       username: user.username,
       email: user.email,
       imgProfile: user.imgProfile,
+      about_you: user.about_you,
       profession: user.profession,
       instagram_link: user.instagram_link,
       facebook_link: user.facebook_link,

@@ -52,7 +52,7 @@ export class PrivateAreaController {
   @Patch('')
   setCardProfile(
      @Body() data) {
-       console.log('dat:', data);
-    return this.privateAreaService.setCardProfile(data.data, data.userId);
+       console.log('dataaaa:', data);
+    return this.privateAreaService.setCardProfile(data.data, data.userId, data.colomnName);
   }
 }

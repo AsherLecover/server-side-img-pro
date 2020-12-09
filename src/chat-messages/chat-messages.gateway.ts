@@ -10,9 +10,7 @@ export class ChatMessagesGateway {
   handleMessage(client: Socket, paylowd: {senderId: number,  reciverId:number, text: string, time: Date}):void {
     console.log(12453524, paylowd);
     
-
     this.wss.emit('msgToClinet',paylowd)
 
-    //return {event: 'msgToClinet', data: 'Hello World'};
   }
 }
