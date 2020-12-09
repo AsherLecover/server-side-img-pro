@@ -60,12 +60,12 @@ export class PrivateAreaService {
       console.log(data);
       console.log(id);
 
-      const query =  this.userRepository.createQueryBuilder('user')
+      const   query = await this.userRepository.createQueryBuilder('user')
       .update()
       .set({ imgProfile: data })
       .where("id = :id", { id: id })
       .execute();
-      return this.userRepository.find({id})
+      return await this.userRepository.find({id})
 
       // const query = this.userRepository.createQueryBuilder('user');
       // query.set({ firstName: "Timber", lastName: "Saw" })
