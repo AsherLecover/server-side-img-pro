@@ -3,14 +3,16 @@ import { PrivateAreaService } from './private-area.service';
 import { Request } from 'express';
 import { FileInterceptor } from '@nestjs/platform-express';
 import {diskStorage} from 'multer' ;
-import { join } from 'path';
+import { parse, join } from 'path';
+
+
 
 export const storage = {
   storage:diskStorage({
     destination:'uploads/images-user-profile',
     filename:(req,file,cb )=>{  
-    console.log(req['headers'].userid);
-    console.log('file:', file);
+    // console.log(req['headers'].userid);
+    // console.log('file:', file);
       const filename = `${req['headers'].userid}.jpg`
       console.log('file name', filename);
       cb(null,`${filename}`)
@@ -29,16 +31,25 @@ export class PrivateAreaController {
 
   @Post('set-img-profile')
     @UseInterceptors(FileInterceptor('image', storage))
-    upload(@UploadedFile() file,
-   
+     async upload(@UploadedFile() file,
+    @Res() res:any,
+    @Req() req:any,
     ){  
-    
+      console.log(45245454545);
+      
+      // console.log('file:::::',file);
+      return  await 'asasasasasasasasas'
+
+      
       // return await res.sendFile(join(process.cwd(),`uploads/images-user-profile/${req['headers'].userid}.jpg`))
     }
 
     @Get('getFile/:id')
-    getfile(@Param('id') id , @Res() res:any){
-      return res.sendFile(join(process.cwd(),`uploads/images-user-profile/${8}.jpg`))
+    getfile(
+      @Res() res:any,
+      @Param('id') id ){
+      
+       return res.sendFile(join(process.cwd(),`uploads/images-user-profile/${id}.jpg`))
     }
 
   @Post('')
