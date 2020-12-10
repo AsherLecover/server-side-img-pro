@@ -20,8 +20,10 @@ export class ChatMessagesService {
     message.resiver_id = resiver_id,
     message.message_text = message_text,
     message.time = time
-    
-
     return  await message.save()
+  }
+
+  async getMessages(){
+    return await this.chatMessagesRepository.createQueryBuilder('chat_messages').getMany()
   }
 }

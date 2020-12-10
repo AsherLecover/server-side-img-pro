@@ -1,14 +1,44 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Req, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { PrivateAreaService } from './private-area.service';
 import { Request } from 'express';
+import { FileInterceptor } from '@nestjs/platform-express';
+import {diskStorage} from 'multer' ;
+
+export const storage = {
+
+  storage:diskStorage({
+    destination:'uploads/images-user-profile',
+    filename:(req,file,cb )=>{  
+    console.log(12318888888888881232);
+      const filename = `${req['headers']['userId']}.jpg`
+      console.log('file name', filename);
+      
+      cb(null,`${filename}`)
+      console.log('file name', filename);
+    }
+  })
+
+}
+
+
 
 @Controller('private-area')
 export class PrivateAreaController {
+
+
+
   constructor(private privateAreaService: PrivateAreaService) {}
+
+  @Post('set-img-profile')
+    @UseInterceptors(FileInterceptor('imgFileProfile', storage))
+    upload(@UploadedFile() file){  
+      console.log('storage');
+      console.log(storage);
+    }
 
   @Post('')
   getAllImegesByUserId(@Req() request: Request) {
-    console.log('private area body: ', request);
+    // console.log('private area body: ', request);
     return this.privateAreaService.getAllImegesByUserId(request.body.id);
   }
 
@@ -25,6 +55,11 @@ export class PrivateAreaController {
   ) {
     return this.privateAreaService.addImg(imgDataToAdd,params);
   }
+
+  
+
+
+  // private-area/set-img-profile`
 
   @Delete('/:id')
   deleteImg(
@@ -56,3 +91,5 @@ export class PrivateAreaController {
     return this.privateAreaService.setCardProfile(data.data, data.userId, data.colomnName);
   }
 }
+
+
