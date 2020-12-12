@@ -32,16 +32,15 @@ export class PrivateAreaController {
   @Post('set-img-profile')
     @UseInterceptors(FileInterceptor('image', storage))
      async upload(@UploadedFile() file,
-    @Res() res:any,
     @Req() req:any,
     ){  
-      console.log(45245454545);
       
-      // console.log('file:::::',file);
-      return  await 'asasasasasasasasas'
+      return  await this.privateAreaService.setCardProfile(
+        `http://127.0.0.1:3000/private-area/getFile/${req['headers'].userid}`, req['headers'].userid, 'imgProfile');
 
       
-      // return await res.sendFile(join(process.cwd(),`uploads/images-user-profile/${req['headers'].userid}.jpg`))
+
+      
     }
 
     @Get('getFile/:id')
