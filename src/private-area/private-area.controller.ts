@@ -63,7 +63,7 @@ export class PrivateAreaController {
 
   @Post('/:id')
   @UseInterceptors(FileInterceptor('image', storageImgList))
-  addImg(
+  async addImg(
     @Param('id') params: Request,
     @Body('') imgDataToAdd,
     @UploadedFile() file,
@@ -79,7 +79,7 @@ export class PrivateAreaController {
     body.imgDataToAdd.imgUrl = `http://127.0.0.1:3000/private-area/get-pic/${body.uuid}`
     console.log('imgDataToAdd111111111111::', body);
     
-   return this.privateAreaService.addImg(body.imgDataToAdd,params);
+   return await this.privateAreaService.addImg(body.imgDataToAdd,params);
   }
 
   @Get('get-pic/:id')
@@ -118,13 +118,13 @@ export class PrivateAreaController {
   }
 
   @Patch('/:id/:userId')
-  editImgDetails(
+  async editImgDetails(
     @Param() params: Request,
      @Body('imgDetailsToUpdate') img) {
        console.log('paaarrrmasss:', params['id']);
        console.log('paaarrrmasss:', params['userId']);
        console.log('imgDetailsToUpdate:', img);
-    return this.privateAreaService.editImgDetails(params['id'], img, params['userId'] );
+    return await this.privateAreaService.editImgDetails(params['id'], img, params['userId'] );
   }
 
   @Get('')
