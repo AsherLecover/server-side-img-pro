@@ -4,10 +4,13 @@ import { Request } from 'express';
 import { FileInterceptor } from '@nestjs/platform-express';
 import {diskStorage} from 'multer' ;
 import { parse, join } from 'path';
+import { v4 as uuidv4 } from 'uuid';
 
 
 
-export const storage = {
+
+export const storageImgProfile = {
+
   storage:diskStorage({
     destination:'uploads/images-user-profile',
     filename:(req,file,cb )=>{  
@@ -16,38 +19,80 @@ export const storage = {
       const filename = `${req['headers'].userid}.jpg`
       console.log('file name', filename);
       cb(null,`${filename}`)
-      console.log('file storage', storage);
+      console.log('file storageImgProfile', storageImgProfile);
     }
   })
-
 }
 
+export const storageImgList = {
+
+  storage:diskStorage({
+    destination:`uploads/images-user-uploads`,
+    filename:(req,file,cb )=>{  
+    // console.log(req['headers'].userid);
+    // console.log('file:', file);
+    console.log('jj7687687687687jjj', file);
+     
+      const filename = `${req['headers'].uuid}.jpg`
+      // const filename = `${uuidv4()}.jpg`
+      // console.log('file name', filename);
+      cb(null,`${filename}`)
+      console.log('file storageImgProfile', storageImgList);
+    }
+  })
+}
 
 
 @Controller('private-area')
 export class PrivateAreaController {
+  imgUuId
 
   constructor(private privateAreaService: PrivateAreaService) {}
 
   @Post('set-img-profile')
-    @UseInterceptors(FileInterceptor('image', storage))
-     async upload(@UploadedFile() file,
-    @Req() req:any,
+    @UseInterceptors(FileInterceptor('image', storageImgProfile))
+     async upload(
+       @UploadedFile() file,
+        @Req() req:any,
     ){  
       
       return  await this.privateAreaService.setCardProfile(
         `http://127.0.0.1:3000/private-area/getFile/${req['headers'].userid}`, req['headers'].userid, 'imgProfile');
 
-      
-
-      
     }
+
+  @Post('/:id')
+  @UseInterceptors(FileInterceptor('image', storageImgList))
+  addImg(
+    @Param('id') params: Request,
+    @Body('') imgDataToAdd,
+    @UploadedFile() file,
+  ) {
+  }
+
+  @Post('/:id/other-data')
+ async addImgOtherData(
+    @Param('id') params: Request,
+    @Body('') body,
+    @Res() res:any,
+  ) {
+    body.imgDataToAdd.imgUrl = `http://127.0.0.1:3000/private-area/get-pic/${body.uuid}`
+    console.log('imgDataToAdd111111111111::', body);
+    
+   return this.privateAreaService.addImg(body.imgDataToAdd,params);
+  }
+
+  @Get('get-pic/:id')
+  getImgfile(
+    @Res() res:any,
+    @Param('id') id ){
+     return res.sendFile(join(process.cwd(),`uploads/images-user-uploads/${id}.jpg`))
+  }
 
     @Get('getFile/:id')
     getfile(
       @Res() res:any,
       @Param('id') id ){
-      
        return res.sendFile(join(process.cwd(),`uploads/images-user-profile/${id}.jpg`))
     }
 
@@ -63,18 +108,6 @@ export class PrivateAreaController {
     return this.privateAreaService.getAllSubjectImgesById(params);
   }
 
-  @Post('/:id')
-  addImg(
-    @Param('id') params: Request,
-    @Body('imgDataToAdd') imgDataToAdd,
-  ) {
-    return this.privateAreaService.addImg(imgDataToAdd,params);
-  }
-
-  
-
-
-  // private-area/set-img-profile`
 
   @Delete('/:id')
   deleteImg(
