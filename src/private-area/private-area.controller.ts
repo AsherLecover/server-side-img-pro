@@ -86,14 +86,19 @@ export class PrivateAreaController {
   getImgfile(
     @Res() res:any,
     @Param('id') id ){
-     return res.sendFile(join(process.cwd(),`uploads/images-user-uploads/${id}.jpg`))
+        return res.sendFile(join(process.cwd(),`uploads/images-user-uploads/${id}.jpg`))
+     
   }
 
     @Get('getFile/:id')
     getfile(
       @Res() res:any,
       @Param('id') id ){
-       return res.sendFile(join(process.cwd(),`uploads/images-user-profile/${id}.jpg`))
+       
+          return res.sendFile(join(process.cwd(),`uploads/images-user-profile/${id}.jpg`))
+     
+        
+
     }
 
   @Post('')

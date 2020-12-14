@@ -13,7 +13,7 @@ export class User extends BaseEntity{
     id: number;
 
     @Column()
-    imgProfile: string = "https://www.w3schools.com/w3images/avatar2.png";
+    imgProfile: string = "http://127.0.0.1:3000/private-area/getFile/default-avatar";
 
     @Column({nullable: true})
     profession:string;
