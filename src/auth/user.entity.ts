@@ -13,7 +13,7 @@ export class User extends BaseEntity{
     id: number;
 
     @Column()
-    imgProfile: string = "http://127.0.0.1:3000/private-area/getFile/default-avatar";
+    imgProfile: string = "https://picpicture.herokuapp.com/private-area/getFile/default-avatar";
 
     @Column({nullable: true})
     profession:string;

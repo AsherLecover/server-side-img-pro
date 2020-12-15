@@ -59,7 +59,7 @@ export class PrivateAreaController {
   @UseInterceptors(FileInterceptor('image', storageImgProfile))
   async upload(@UploadedFile() file, @Req() req: any) {
     return await this.privateAreaService.setCardProfile(
-      `http://127.0.0.1:3000/private-area/getFile/${req['headers'].userid}`,
+      `https://picpicture.herokuapp.com/private-area/getFile/${req['headers'].userid}`, 
       req['headers'].userid,
       'imgProfile',
     );
