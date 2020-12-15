@@ -6476,7 +6476,7 @@ class ProfileCardComponent {
         this.userId = this.privateAreaService.getUserId();
         // this.userImgProfile = 'https://www.w3schools.com/w3images/avatar2.png'
         try {
-            this.userImgProfile = `http://127.0.0.1:3000/private-area/getFile/${this.userId}`;
+            this.userImgProfile = `https://picpicture.herokuapp.com/private-area/getFile/${this.userId}`;
         }
         catch (error) {
         }
