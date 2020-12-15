@@ -1,7 +1,8 @@
-import { Controller, Get, Param, ParseIntPipe, Post, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { PicMainListSubjectsService } from './pic-main-list-subjects.service';
 import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
+import { join } from 'path';
 
 
 
@@ -13,6 +14,18 @@ export class PicMainListSubjectsController {
     @Post('img')
     uploudImg(){
         this.picMainListSubjectsService.CreateimgList()
+    }
+
+    @Get('get-main-img/:img')
+    getfile(
+      @Res() res:any,
+      @Param('img') img ){
+        'localhost:3000/pic-main-list-subjects/get-main-img/orbani-main'
+       
+          return res.sendFile(join(process.cwd(),`uploads/main-subject-img/${img}.jpg`))
+     
+        
+
     }
     
     @Get('/:id')

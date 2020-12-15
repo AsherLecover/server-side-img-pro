@@ -82,9 +82,10 @@ const routes = [
     { path: 'discount', component: _components_discount_discount_component__WEBPACK_IMPORTED_MODULE_13__["DiscountComponent"] },
     { path: 'new-img', component: _new_img_new_img_component__WEBPACK_IMPORTED_MODULE_14__["NewImgComponent"] },
     { path: 'private-area', component: _components_private_area_private_area_component__WEBPACK_IMPORTED_MODULE_15__["PrivateAreaComponent"] },
+    { path: '', component: _components_pic_sub_main_page_pic_sub_main_page_component__WEBPACK_IMPORTED_MODULE_2__["PicSubMainPageComponent"] },
     { path: 'management', component: _components_management_management_component__WEBPACK_IMPORTED_MODULE_8__["ManagementComponent"], canActivate: [_components_hedder_hedder_component__WEBPACK_IMPORTED_MODULE_9__["ManagementGuardService"]] },
     { path: '', redirectTo: 'pic-sub-main-page', pathMatch: 'full' },
-    { path: '**', redirectTo: 'home', pathMatch: 'full' },
+    { path: '**', redirectTo: 'pic-sub-main-page', pathMatch: 'full' },
 ];
 class AppRoutingModule {
 }
@@ -7555,7 +7556,8 @@ const environment = {
         messagingSenderId: "71510518597",
         appId: "1:71510518597:web:17f1bd2ea36ce5d69b2c2c",
         measurementId: "G-T65YB4GCHY"
-    }
+    },
+    apiUrl: '/'
 };
 
 
@@ -7587,7 +7589,7 @@ const environment = {
         measurementId: "G-T65YB4GCHY"
     },
     // apiUrl:'http://localhost:3000'
-    apiUrl: '/'
+    apiUrl: ''
 };
 /*
  * For easier debugging in development mode, you can import the following file

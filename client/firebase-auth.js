@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["firebase-auth"],{
 
-/***/ "./node_modules/firebase/auth/dist/index.esm.js":
-/*!******************************************************!*\
-  !*** ./node_modules/firebase/auth/dist/index.esm.js ***!
-  \******************************************************/
+/***/ "../../../node_modules/firebase/auth/dist/index.esm.js":
+/*!*****************************************************************!*\
+  !*** C:/Users/stu/node_modules/firebase/auth/dist/index.esm.js ***!
+  \*****************************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
