@@ -14,11 +14,16 @@ import { ImgHomeLivingRoomModule } from './img-home-living-room/img-home-living-
 import { ConfigModule } from '@nestjs/config';
 import { PrivateAreaModule } from './private-area/private-area.module';
 import { ChatMessagesModule } from './chat-messages/chat-messages.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'client'),
+    }),
     TypeOrmModule.forRoot(typeOrmConfig),
     ConfigModule.forRoot({
       envFilePath:'.env'

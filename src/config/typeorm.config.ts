@@ -7,16 +7,28 @@ import { ShppingCart } from "src/shpping-cart/shpping-cart-entity";
 import { ShppingCartRepository } from "src/shpping-cart/shpping-cart-repository";
 import { cardImgList } from "src/subjects-images-data/img.entity";
 
+// export const typeOrmConfig: TypeOrmModuleOptions = {
+//     type: 'postgres',
+//     host: 'localhost',
+//     port: 5432,
+//     username: 'postgres',
+//     password: 'qetu1357',
+//     database: 'img_project',
+//     // logging:true,
+//     // entities: [__dirname + '/../**/*.entity.{js,ts}',ShppingCart,ContactUsEntity ],
+//     entities: [ShppingCart,ContactUs, User, ImgListBySubject, cardImgList, ChatMessages],
+//     synchronize: true
+// };
+
 export const typeOrmConfig: TypeOrmModuleOptions = {
     type: 'postgres',
+    url: 'postgres://aehzfedi:el2d6MTpHiZus9_dgBYYUADPyeGzXSeo@kandula.db.elephantsql.com:5432/aehzfedi',
     host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: 'qetu1357',
     database: 'img_project',
+    autoLoadEntities: true,
+    synchronize: true,
     // logging:true,
     // entities: [__dirname + '/../**/*.entity.{js,ts}',ShppingCart,ContactUsEntity ],
     entities: [ShppingCart,ContactUs, User, ImgListBySubject, cardImgList, ChatMessages],
-    synchronize: true
 };
  
