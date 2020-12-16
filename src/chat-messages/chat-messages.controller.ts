@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { ChatMessagesDto } from './chat-messages-DTO';
 import { ChatMessagesGateway } from './chat-messages.gateway';
 import { ChatMessagesService } from './chat-messages.service';
@@ -11,13 +11,20 @@ export class ChatMessagesController {
 
   @Post('')
   handleMessage(@Body('msg') msg:ChatMessagesDto) {
-    console.log('message controllllerrrr:', msg);
+    console.log('message controllllerrrr:', msg); 
      return this.chatMessagesService.handleMessage(msg)
   }
 
-  @Get('')
-  getMessage() {
-     return this.chatMessagesService.getMessages()
-  }
+  @Get('/:sender_id/:resiver_id')
+  getMessage(
+    @Param('sender_id') sender_id: number,
+    @Param('resiver_id') resiver_id: number
+  ) {
+
+    console.log('sender_id:: ',sender_id);
+    console.log('resiver_id:: ', resiver_id);
+    
+     return this.chatMessagesService.getMessages(sender_id, resiver_id) 
+  } 
 
 }
