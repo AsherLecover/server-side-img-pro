@@ -29,7 +29,7 @@ import { join } from 'path';
       envFilePath:'.env'
     }),
     AuthModule,
-    SubjectsImagesDataModule,
+    SubjectsImagesDataModule, 
     PicMainListSubjectsModule,
     ImgDetailsModule,
     ShppingCartModule,
