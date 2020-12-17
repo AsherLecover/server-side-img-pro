@@ -82,7 +82,7 @@ export class PrivateAreaController {
     body.imgDataToAdd.imgUrl = `https://picpicture.herokuapp.com/private-area/get-pic/${body.uuid}`;
     console.log('imgDataToAdd111111111111::', body);
 
-    return await this.privateAreaService.addImg(body.imgDataToAdd, params);
+    return await this.privateAreaService.addImg(body.imgDataToAdd, params); 
   }
 
   @Get('get-pic/:id')
