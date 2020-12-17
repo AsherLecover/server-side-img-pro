@@ -24,7 +24,7 @@ export class ChatMessagesController {
     console.log('sender_id:: ',sender_id);
     console.log('resiver_id:: ', resiver_id);
     
-     return this.chatMessagesService.getMessages(sender_id, resiver_id) 
+     return this.chatMessagesService.getMessages(sender_id, resiver_id)  
   } 
 
 }
