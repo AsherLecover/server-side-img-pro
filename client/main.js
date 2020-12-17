@@ -6569,11 +6569,11 @@ class ProfileCardComponent {
         }
     }
     ngOnInit() {
-        if (!this.userData && !localStorage.getItem('userData')) {
-            this.userData = this.privateAreaService.user;
-            this.svcClinets.userProfileImg$.next(this.userData.imgProfile);
-        }
-        else if (localStorage.getItem('userData')) {
+        // if(!this.userData && !localStorage.getItem('userData')){
+        //   this.userData =  this.privateAreaService.user;
+        //   this.svcClinets.userProfileImg$.next(this.userData.imgProfile)
+        // }
+        if (localStorage.getItem('userData')) {
             this.userData = JSON.parse(localStorage.getItem('userData') || '[]');
             this.svcClinets.userProfileImg$.next(this.userData.imgProfile);
             this.profession = (this.userData.profession == null) ? this.profession : this.userData.profession;
