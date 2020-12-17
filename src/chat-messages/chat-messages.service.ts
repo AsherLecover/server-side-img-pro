@@ -23,7 +23,16 @@ export class ChatMessagesService {
     return  await message.save()
   }
 
-  async getMessages(){
-    return await this.chatMessagesRepository.createQueryBuilder('chat_messages').getMany()
-  }
+  async getMessages(sender_id, resiver_id){
+    
+    const query = this.chatMessagesRepository.createQueryBuilder('chat_messages')
+    query.where('chat_messages.sender_id = :sender_id', { sender_id: sender_id })
+        .andWhere('chat_messages.resiver_id = :resiver_id', { resiver_id: resiver_id }).orWhere(
+          'chat_messages.sender_id = :resiver_id', { sender_id: sender_id }).andWhere(
+            'chat_messages.resiver_id = :sender_id', { resiver_id: resiver_id })
+          
+        const msgs = await query.getMany();
+        return msgs
+  } 
 }
+ 
